@@ -16,7 +16,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 
 
 
-
+<tx:annotation-driven />
 <mvc:annotation-driven/>
 
 <mvc:resources location="/resources/" mapping="/resources/**"/>
