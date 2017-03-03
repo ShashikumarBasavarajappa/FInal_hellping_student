@@ -20,7 +20,10 @@ public class HomeController {
     private UserDAO userDao;
 	@RequestMapping(value="/")
 	public ModelAndView test(HttpServletResponse response) throws IOException{
-		return new ModelAndView("home");
+		ModelAndView model = new ModelAndView("home");
+		model.addObject("printme","SHASHIKUMAR !!");
+		return model;
+		
 	}
 	
 	@RequestMapping(value="/home")
@@ -28,6 +31,7 @@ public class HomeController {
         List<User> listUsers = userDao.list();
         ModelAndView model = new ModelAndView("homepage");
         model.addObject("userList", listUsers);
+        
         return model;
     }
 }
