@@ -32,17 +32,110 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#" class="active">Search</a></li>
     </ul>
-    <button class="btn btn-danger navbar-btn">Button</button>
+     <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
+    </ul>
+    
+    <button class="btn btn-danger navbar-btn">Rejected Appliants</button>
   </div>
 </nav>
 
 
-  <h2>Navbar Button</h2>
-  <p>Use the navbar-btn class on a button to vertically align (same padding as links) it inside the navbar.</p>
+  <h2>Main Design Bar</h2>
+  <p>We Are developed lot thing here ....................</p>
+  
+  <div class="container-fluid">
+            <div class="well-searchbox">
+                <form id="sampleForm" class="form-horizontal" action="Adminsearch" method-="get">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Keyword</label>
+                        <div class="col-md-8">
+                            <input type="text" name="email" class="form-control" placeholder="Keyword">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Country</label>
+                        <div class="col-md-8">
+                            <select class="form-control" placeholder="Country">
+                                <option value="">All</option>
+                                <option value="">Country 1</option>
+                                <option value="">Country 2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Province</label>
+                        <div class="col-md-8">
+                            <select class="form-control" placeholder="Province">
+                                <option value="">All</option>
+                                <option value="">Province 1</option>
+                                <option value="">Province 2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">City</label>
+                        <div class="col-md-8">
+                            <select class="form-control" placeholder="City">
+                                <option value="">All</option>
+                                <option value="">City 1</option>
+                                <option value="">City 2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Category</label>
+                        <div class="col-md-8">
+                            <select class="form-control" placeholder="Category">
+                                <option value="">All</option>
+                                <option value="">Category 1</option>
+                                <option value="">Category 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-4 col-sm-5">
+                        <button type="submit" class="btn btn-success">Search</button>
+						<h1>${searchresult}</h1>                        
+                    </div>
+                </form>
+            </div>
+            </div>
+            &nbsp;
+&nbsp;
+
+    <table class="table table-bordered table-inverse"  >
+                   <thead style="background-color: black;color:red;"   >
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Email</th>
+                      <th>Accept/Reject</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  
+                  <c:forEach var="emp" items="${searchresult}">   
+					
+                    <tr>
+                       <td>${emp.last_name}</td>
+                       <td>${emp.first_name}</td>
+                       <td>${emp.email}</td>
+                       <td>
+                           <input type="checkbox" checked data-toggle="toggle" data-style="android" data-onstyle="info">
+                       </td>
+                    </tr>
+                  </tbody>
+                 </c:forEach>  
+	</table> 
 </div>
 
 </body>
