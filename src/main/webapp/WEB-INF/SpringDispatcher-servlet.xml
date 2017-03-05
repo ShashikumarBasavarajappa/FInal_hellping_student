@@ -64,7 +64,6 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 
 	<bean class="com.development.dao.UserDAOImpl" id="userDao">
 
-
 	<constructor-arg>
 	
 		<ref bean="sessionFactory"/>
@@ -72,5 +71,13 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	</constructor-arg>
 
 </bean>
+	<bean class="com.development.dao.RegistrationImpl" id="regDao">
+		<constructor-arg>
+		
+			<ref bean="sessionFactory"/>
+		
+		</constructor-arg>
+	
+	</bean>
 
 </beans>

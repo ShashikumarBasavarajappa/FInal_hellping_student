@@ -7,5 +7,6 @@
     <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="show_sql">true</property> 
     <mapping resource="com/development/model/User.hbm.xml"/>
+    <mapping resource="com/development/model/Registration.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
