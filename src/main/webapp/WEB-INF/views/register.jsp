@@ -9,11 +9,26 @@
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/Register.css" rel="stylesheet"/>
+      <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
+    
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
     <!-- 
      <script src="<%=request.getContextPath() %>/resources/jquery/js/Register.js"></script>
      -->
+     
+             
+        <style type="text/css">
+			        
+			body {
+			    background-image: url("<%=request.getContextPath() %>/resources/images/back.png");
+			}
+			.no-background {
+			    background-image: url("images/blank.jpg");
+			}
+			 
+        </style>
+    
 </head>
 <body>
 
