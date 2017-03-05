@@ -56,6 +56,7 @@
                 <div class="col-md-offset-5 col-md-3">
                     <div class="form-login">
                     <h4>Hello Shashi,,,,</h4>
+                    <h5 style="color:red">${error_msg}</h5>
                   <div class="form-group">
                     <label for="firstname" class="col-sm-3 control-label">EMAIL</label>
                     <div class="col-sm-9">

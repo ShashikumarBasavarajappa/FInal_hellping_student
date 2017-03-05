@@ -42,8 +42,13 @@ public class RegistrationImpl implements RegisterDAO {
 		Registration r = (Registration) criteria.uniqueResult();
 		//Registration r  = (Registration) session.get(Registration.class, email);
 		//Registration r = (Registration) session.get(Registration.class, new String(email));
-		System.out.println("========rtttttttttttttttttttttttttt====================" + r);
-		return r;
+		if(r != null){
+			System.out.println("========rtttttttttttttttttttttttttt====================" + r.getEmail());
+			return r;
+		}
+	  else{
+		return null;
+		}
 	}
 
 }

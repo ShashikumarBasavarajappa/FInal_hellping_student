@@ -45,13 +45,21 @@ public class RegistrationController {
 
 		String username = registration.getEmail();
 		String password =  registration.getPassword();
-		System.out.println("................................" +  username + "===================" + password);
+		//System.out.println("................................" +  username + "===================" + password);
 		//regDao.save(registration);
 		//regDao.save(registration);
-		regDao.logincheck(username);
-		ModelAndView model = new ModelAndView("register");
-		model.addObject("printme","SHASHIKUMAR !!");
-		return model;
+		Registration  r = regDao.logincheck(username);
+		if(r != null){
+			ModelAndView model = new ModelAndView("adminhome");
+			model.addObject("admindetails", r);
+			return model;
+			//System.out.println("-------------------jjjjjj-------" + r);
+		}
+		else{
+			ModelAndView model = new ModelAndView("home");
+			model.addObject("error_msg","Please enter correct email and password");
+			return model;
+		}
 		
 	}
 }
