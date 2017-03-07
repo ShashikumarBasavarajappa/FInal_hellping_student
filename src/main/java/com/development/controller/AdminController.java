@@ -18,7 +18,6 @@ import javassist.bytecode.Descriptor.Iterator;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.collections.IteratorUtils;
 @Controller
 public class AdminController {
 
@@ -35,9 +34,8 @@ public class AdminController {
 		List<SearchEngine> searchresult = adminDao.searchAdmin(search);
 		//for (int i = 0; i < ss.size(); i++) {
 			//System.out.println("*********************"  + ss + "-------------------------");
-		//}
-
-
+		////}
+		//searchresult.
 		for (SearchEngine e : searchresult) {
 			SearchEngine sss =  (SearchEngine) e;
 		    System.out.println("============================999999999999" + sss.getEmail() + "=============" + sss.getPassword() + "=======================6666");
