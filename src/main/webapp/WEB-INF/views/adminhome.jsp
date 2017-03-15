@@ -9,6 +9,7 @@
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/shaashi.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
+    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/profile.css" rel="stylesheet"/>
     
             
         <style type="text/css">
@@ -33,7 +34,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#">Home</a></li>
-      <li><a href="#">Profile</a></li>
+      <li><a href="adminprofile">Profile</a></li>
       <li><a href="#" class="active">Search</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">

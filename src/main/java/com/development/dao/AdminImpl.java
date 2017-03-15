@@ -1,6 +1,7 @@
 package com.development.dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -38,6 +39,7 @@ public class AdminImpl  implements AdminDAO{
     	   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", searchtext.getEmail(),MatchMode.ANYWHERE));
     	   
     	   List<SearchEngine> searchresult = cr.list();
+    	
     	  // System.out.println("888888**************************************" + searchresult.getClass().getName() + "=======");
     	   
     	   
@@ -72,6 +74,8 @@ public class AdminImpl  implements AdminDAO{
                      System.out.println("===========================amma========" + results.size() + "=============");
                       
                      */
+    	  // List list = Arrays.asList(searchresult);
+    	  // searchresult.get
     	   if(searchresult.size() == 0){
     		   return null;
     	   }

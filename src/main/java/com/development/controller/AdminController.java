@@ -17,6 +17,7 @@ import com.development.model.SearchEngine;
 import javassist.bytecode.Descriptor.Iterator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 @Controller
 public class AdminController {
@@ -32,20 +33,41 @@ public class AdminController {
 		//regDao.save(registration);
 		//SearchEngine ss = (SearchEngine) adminDao.searchAdmin(searchtext);
 		List<SearchEngine> searchresult = adminDao.searchAdmin(search);
+	
 		//for (int i = 0; i < ss.size(); i++) {
 			//System.out.println("*********************"  + ss + "-------------------------");
 		////}
 		//searchresult.
+		//List<SearchEngine> ss = (List<SearchEngine>) searchresult;
+		
+		//SearchEngine[] ss= (SearchEngine[])searchresult;
+		//ArrayList<SearchEngine> ss = new
+		
+		//List<List<SearchEngine>> cardsList = Arrays.asList(searchresult);
+		
+		//System.out.println(cardsList.);
+
+
 		for (SearchEngine e : searchresult) {
 			SearchEngine sss =  (SearchEngine) e;
 		    System.out.println("============================999999999999" + sss.getEmail() + "=============" + sss.getPassword() + "=======================6666");
 		}
 		
+		 
 		//System.out.println("====================" + + "---------------------------------");
 		ModelAndView model = new ModelAndView("adminhome");
 		model.addObject("searchresult",searchresult);
 		return model;
 		
 	}
+
+		@RequestMapping(value="/adminprofile")
+    public ModelAndView home() {
+        //List<User> listUsers = userDao.list();
+        ModelAndView model = new ModelAndView("profile");
+       // model.addObject("userList", listUsers);
+        
+        return model;
+    }
 	
 }
