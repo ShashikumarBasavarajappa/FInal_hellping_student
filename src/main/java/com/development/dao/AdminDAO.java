@@ -8,6 +8,11 @@ import com.development.model.User;
 
 public interface AdminDAO {
 	public List<SearchEngine> searchAdmin(SearchEngine searchtext);
+    
+    public  SearchEngine profiledetails(String email);
+    
+    
+    //System.out.println("=======sdfadsfds===" + email);
 
 
 }

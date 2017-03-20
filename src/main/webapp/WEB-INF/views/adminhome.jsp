@@ -34,7 +34,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#">Home</a></li>
-      <li><a href="adminprofile">Profile</a></li>
+      <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
       <li><a href="#" class="active">Search</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
@@ -49,7 +49,7 @@
 
   <h2>Main Design Bar</h2>
   <p>We Are developed lot thing here ....................</p>
-  
+<p> rrrrrrrrrrrrrrrrr     ${admindetails} </p>
   <div class="container-fluid">
             <div class="well-searchbox">
                 <form id="sampleForm" class="form-horizontal" action="Adminsearch" method-="get">

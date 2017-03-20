@@ -33,7 +33,7 @@ public class RegistrationController {
 
 		
 		//System.out.println("................................" + Email + "=====" + FirstName + "=====" + LastName + "=====" + password + "==========" + Con_pas);
-		regDao.save(registration);
+		regDao.save(regisktration);
 		ModelAndView model = new ModelAndView("register");
 		model.addObject("printme","SHASHIKUMAR !!");
 		return model;
@@ -49,12 +49,13 @@ public class RegistrationController {
 		//regDao.save(registration);
 		//regDao.save(registration);
 		Registration  r = regDao.logincheck(username);
+        System.out.println("-------------------jjjjjj-------" + r.getFirst_name());
+
 		if(r != null){
 			ModelAndView model = new ModelAndView("adminhome");
 			model.addObject("admindetails", r);
 			return model;
-			//System.out.println("-------------------jjjjjj-------" + r);
-		}
+         }
 		else{
 			ModelAndView model = new ModelAndView("home");
 			model.addObject("error_msg","Please enter correct email and password");

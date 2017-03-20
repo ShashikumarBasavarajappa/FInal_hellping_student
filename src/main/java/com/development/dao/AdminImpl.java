@@ -86,6 +86,25 @@ public class AdminImpl  implements AdminDAO{
     	   }
 	}
 
+	@Override
+	@Transactional	
+	public SearchEngine profiledetails(String email) {
+		// TODO Auto-generated method stub
+  		  Session session = sessionFactory.getCurrentSession();
+	   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
+	   SearchEngine profileresult = (SearchEngine) cr.uniqueResult();
+		System.out.println("----------------------------" + profileresult.getFirst_name());
+		  // if(profileresult.getEmail() equals(email)){
+    		   return profileresult;
+    	  //}
+    	   //else{
+    		 //  //Iterator<St = new type();>
+    	
+    		   //return null;
+    	   //}
+
+	}
+
 	
 	
     

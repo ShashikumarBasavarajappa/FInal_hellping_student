@@ -6,8 +6,10 @@ import org.hibernate.search.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.development.dao.AdminDAO;
@@ -61,10 +63,29 @@ public class AdminController {
 		
 	}
 
-		@RequestMapping(value="/adminprofile")
-    public ModelAndView home() {
+	@RequestMapping(value="/profile_save", method = RequestMethod.GET)
+	
+	public ModelAndView registersave(@RequestParam("first_name") String first_name, @RequestParam("last_name") String last_name) {
+		
+		System.out.println("****************************" + first_name + "************" + last_name);
+
+		
+		//System.out.println("................................" + Email + "=====" + FirstName + "=====" + LastName + "=====" + password + "==========" + Con_pas);
+	//	regDao.save(registration);
+	//	ModelAndView model = new ModelAndView("register");
+	//	model.addObject("printme","SHASHIKUMAR !!");
+	//	return model;
+		return null;
+	}
+		@RequestMapping(value="/adminprofile/{email}")
+    public ModelAndView profile(@PathVariable String email) {
         //List<User> listUsers = userDao.list();
+        System.out.println("profile guru--------" + email);
+        SearchEngine profileresult = adminDao.profiledetails(email);
+
+        System.out.println("----------------------------------" + profileresult.getFirst_name());
         ModelAndView model = new ModelAndView("profile");
+        model.addObject("profileresult",profileresult);
        // model.addObject("userList", listUsers);
         
         return model;
