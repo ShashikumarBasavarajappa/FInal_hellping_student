@@ -33,7 +33,7 @@ public class RegistrationController {
 
 		
 		//System.out.println("................................" + Email + "=====" + FirstName + "=====" + LastName + "=====" + password + "==========" + Con_pas);
-		regDao.save(regisktration);
+		regDao.save(registration);
 		ModelAndView model = new ModelAndView("register");
 		model.addObject("printme","SHASHIKUMAR !!");
 		return model;

@@ -28,6 +28,11 @@ public class AdminImpl  implements AdminDAO{
 	
 	private SessionFactory sessionFactory;
 	
+	
+	private Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
+    }
+	
     public AdminImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -105,7 +110,37 @@ public class AdminImpl  implements AdminDAO{
 
 	}
 
+	@Override
+	@Transactional		
+	public SearchEngine profilesave(SearchEngine profile_save) {
+		System.out.println("********************************************************hhh888888*************");
+		// TODO Auto-generated method stub
+		//System.out.println("---------------" + profile_save.getFirst_name());
+		Session session = sessionFactory.getCurrentSession();
+		int id = profile_save.getId();
+		SearchEngine sps = getDetails(id);
+		System.out.println("--------------------profile ----" + sps.getPassword());
+		sps.setEmail(profile_save.getEmail());
+		sps.setFirst_name(profile_save.getFirst_name());
+		session.update(sps);
+		//session.update('email',profile_save.getEmail());
+		//return (SearchEngine) session.get(SearchEngine.class,profile_save.getEmail());
+		//System.out.println("-----------sdf------" + l.size());
+		//session.update(profile_save);
+		//SearchEngine.classreturn null;
+		return sps;
+	}
+
+	public SearchEngine getDetails(int id){
+		System.out.println("9999999999999***9999999999" + id);
+		Session session = sessionFactory.getCurrentSession();
 	
+		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
+		System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
+		
+		return ss;
+		
+	}
 	
     
 	//@Override

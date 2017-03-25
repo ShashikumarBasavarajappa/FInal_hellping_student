@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.development.dao.AdminDAO;
+import com.development.dao.RegisterDAO;
 import com.development.model.Registration;
 import com.development.model.SearchEngine;
 
@@ -21,11 +22,15 @@ import javassist.bytecode.Descriptor.Iterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 @Controller
 public class AdminController {
 
 	@Autowired
 	AdminDAO adminDao;
+	RegisterDAO regDao;
 	@RequestMapping(value="/Adminsearch", method = RequestMethod.GET)
 	public ModelAndView registersave(@ModelAttribute("search") SearchEngine search) throws IOException{
 
@@ -63,19 +68,22 @@ public class AdminController {
 		
 	}
 
-	@RequestMapping(value="/profile_save", method = RequestMethod.GET)
-	
-	public ModelAndView registersave(@RequestParam("first_name") String first_name, @RequestParam("last_name") String last_name) {
+	@RequestMapping(value="/adminprofile/profile_save", method = RequestMethod.GET)
+	public ModelAndView profile_save(@ModelAttribute("profile_save") SearchEngine profile_save) {
 		
-		System.out.println("****************************" + first_name + "************" + last_name);
+		//System.out.println("****************************" + first_name + "************" + last_name);
 
-		
+		System.out.println("=======*********" + profile_save.getFirst_name());
+		SearchEngine profilesave = adminDao.profilesave(profile_save);
+		System.out.println("----------------------------amma ---" + profile_save.getFirst_name());
+		ModelAndView model = new ModelAndView("profile");
+		model.addObject("profileresult",profilesave);
 		//System.out.println("................................" + Email + "=====" + FirstName + "=====" + LastName + "=====" + password + "==========" + Con_pas);
 	//	regDao.save(registration);
 	//	ModelAndView model = new ModelAndView("register");
 	//	model.addObject("printme","SHASHIKUMAR !!");
 	//	return model;
-		return null;
+		return model;
 	}
 		@RequestMapping(value="/adminprofile/{email}")
     public ModelAndView profile(@PathVariable String email) {

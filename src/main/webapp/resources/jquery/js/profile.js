@@ -4,6 +4,8 @@ $(document).ready(function () {
 	$("#email").attr('disabled','disabled');
 	$("#first_name").attr('disabled','disabled');
 	$("#last_name").attr('disabled','disabled');
+	$("#password").attr('disabled','disabled');
+	$("#id").attr('disabled','disabled');
 	
 	//$('#save_button').attr('disabled','disabled');
 	$('#save_button').prop('disabled',true);
@@ -12,6 +14,9 @@ $(document).ready(function () {
     	$("#email").removeAttr('disabled');
     	$("#first_name").removeAttr('disabled');
     	$("#last_name").removeAttr('disabled');
+    	$("#password").removeAttr('disabled');
+    	$("#id").removeAttr('disabled');
+    	
     	$('#edit_button').attr('disabled','disabled');
     	//$('#save_button').removeAttr('disabled');
     	$('#save_button').prop('disabled', false); 
@@ -22,23 +27,32 @@ $(document).ready(function () {
     	var first_name = $('#first_name').val();
     	var last_name = $('#last_name').val();
     	var email = $('#email').val();
+    	var password = $('#password').val();
     	
-    	var data = 'first_name=' + encodeURIComponent(first_name) + '&last_name=' + encodeURIComponent(last_name) + '&email=' + encodeURIComponent(email);
+    	//alert("ashvdgvsagvgsavgdvsa");
+    
     	
+    
+    	
+    	var data = 'first_name=' + first_name + '&last_name=' + last_name + '&email=' + email + '&password=' + password;
+    	var url = $("#profilepage").attr("action");
+    	//alert("-----------------" + url);
+    	//alert("=======================" + data);
+    	//var frm = $('#submitForm');
+    	$('#save_button').fancybox();
     	$.ajax({
-			url : $("#profilepage").attr("action"),
+			url : $('#profilepage').attr('action'),
 			data : data,
 			type : "GET",
-
 			success : function(response) {
 				alert( response );
 			},
-			error : function(xhr, status, error) {
-				alert(xhr.responseText);
-			}
+			error: function(){      
+				   alert('Error while request..');
+		   }
 		});    	
     	
     	
-    	return false;
+
     });
 });

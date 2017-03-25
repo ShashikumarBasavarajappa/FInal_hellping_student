@@ -58,12 +58,16 @@
   </div>
 </nav>
 
-	<form role="form" id="profilepage" action="profile_save" method="get">
+	<form  id="profilepage" action="profile_save" method="get">
 	
 <div class="col-md-3"></div>
     <div class="col-md-6">
          <div class="row myborder">
              <h4 style="color: #7EB59E; margin: initial; margin-bottom: 10px;">View the profile</h4><hr>
+             <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user mycolor"></i></span>
+                <input size="60" maxlength="255" class="form-control" value= ${profileresult.id} type="text" id="id" name="id">                                                        </div>
+             
             <div class="input-group margin-bottom-20">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user mycolor"></i></span>
                 <input size="60" maxlength="255" class="form-control" value= ${profileresult.email} type="text" id="email" name="email">                                                        </div>
@@ -72,7 +76,11 @@
                 <input size="60" maxlength="255" class="form-control" value= ${profileresult.first_name} type="text" id="first_name" name="first_name">                                    </div>
             <div class="input-group margin-bottom-20">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user mycolor"></i></span>
-                <input size="60" maxlength="255" class="form-control" value= ${profileresult.last_name} type="text" id="last_name" name="last_name">                                    </div>
+                <input size="60" maxlength="255" class="form-control" value= ${profileresult.last_name} type="text" id="last_name" name="last_name"> </div>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user mycolor"></i></span>
+                <input size="60" maxlength="255" class="form-control" value= ${profileresult.password} type="text" id="password" name="password">                                    </div>
+                                            
             <div class="row">
                 <div class="col-md-6">
                     <button class="btn-u pull-left" type="submit" id="edit_button">Edit Profile</button>
