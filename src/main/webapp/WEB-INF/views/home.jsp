@@ -13,8 +13,17 @@
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/shaashi.css" rel="stylesheet"/>
+     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
         
         <style type="text/css">
+			        
+			body {
+			    background-image: url("<%=request.getContextPath() %>/resources/images/back.png");
+			}
+			.no-background {
+			    background-image: url("images/blank.jpg");
+			}
+			 
         </style>
     </head>
     <body>

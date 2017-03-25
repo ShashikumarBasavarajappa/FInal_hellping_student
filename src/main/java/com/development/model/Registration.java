@@ -4,14 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.lucene.document.Field.Index;
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Store;
+
 @Entity
 @Table(name="Registration")
 public class Registration {
 
 	private int id;
+	@Field
 	private String first_name;
 	private String last_name;
 	@Id
+	@Field
 	private String email;
 	private String password;
 	private String password_confirmation;

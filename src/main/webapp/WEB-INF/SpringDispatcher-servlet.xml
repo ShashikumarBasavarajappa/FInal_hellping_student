@@ -15,7 +15,6 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
   xmlns:mvc="http://www.springframework.org/schema/mvc">
 
 
-
 <tx:annotation-driven />
 <mvc:annotation-driven/>
 
@@ -72,6 +71,15 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 
 </bean>
 	<bean class="com.development.dao.RegistrationImpl" id="regDao">
+		<constructor-arg>
+		
+			<ref bean="sessionFactory"/>
+		
+		</constructor-arg>
+	
+	</bean>
+
+	<bean class="com.development.dao.AdminImpl" id="adminDao">
 		<constructor-arg>
 		
 			<ref bean="sessionFactory"/>

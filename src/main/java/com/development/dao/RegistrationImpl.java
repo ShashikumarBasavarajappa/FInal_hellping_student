@@ -37,13 +37,14 @@ public class RegistrationImpl implements RegisterDAO {
 		//int id=1;
 //		int id1 = session.createQuery("select id from Registration where email = email");
 		//Registration r =  (Registration) session.load(Registration.class, email );
-		System.out.println("===============dddddddddddddddddddddddddddddd 77777777=============" + email);
+		//System.out.println("===============dddddddddddddddddddddddddddddd 77777777=============" + email);
 		Criteria criteria = session.createCriteria(Registration.class).add(Restrictions.eq("email", email));
 		Registration r = (Registration) criteria.uniqueResult();
 		//Registration r  = (Registration) session.get(Registration.class, email);
 		//Registration r = (Registration) session.get(Registration.class, new String(email));
+        
 		if(r != null){
-			System.out.println("========rtttttttttttttttttttttttttt====================" + r.getEmail());
+			//System.out.println("========rtttttttttttttttttttttttttt====================" + r.getFirst_name() + "==============" + r.getLast_name());
 			return r;
 		}
 	  else{
@@ -51,4 +52,6 @@ public class RegistrationImpl implements RegisterDAO {
 		}
 	}
 
+
+	
 }
