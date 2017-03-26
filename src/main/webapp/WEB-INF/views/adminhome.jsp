@@ -7,10 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/>
+    <!-- <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/> -->
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/shaashi.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/profile.css" rel="stylesheet"/>
+    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/tabledesign.css" rel="stylesheet"/>
     
             
         <style type="text/css">
@@ -114,8 +115,8 @@
             &nbsp;
 &nbsp;
    
-    <table class="table table-bordered table-inverse"  >
-                   <thead style="background-color: black;color:red;"   >
+    <table class="table table-bordered table-inverse">
+                   <thead class="thead-inverse">
                     <tr>
                       <th>First Name</th>
                       <th>Last Name</th>
@@ -123,14 +124,18 @@
                       <th>Accept/Reject</th>
                     </tr>
                   </thead>
-                  <tbody style="background-color: white;color:red;">
+                  <tbody>
 
                     <c:forEach items="${searchresult}" var="emp"> 
                     <tr>
                        <td>${emp.first_name}</td>                      
                        <td>${emp.last_name}</td>
                        <td>${emp.email}</td>
-                   
+                   	<td><label class="switch">
+							  <input type="checkbox">
+							  <div class="slider round"></div>
+							</label>
+							</td>
                     </tr>
                    </c:forEach>
                   </tbody>

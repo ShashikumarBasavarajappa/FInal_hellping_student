@@ -57,18 +57,6 @@ public class AdminController {
 		
 		
 		
-		List<SearchEngine> ss = new ArrayList<SearchEngine>();
-		SearchEngine ssss = new SearchEngine();
-		
-		for (SearchEngine a : ss){
-			ssss.setEmail(a.getEmail());	
-			ssss.setFirst_name(a.getFirst_name());
-			ssss.setLast_name(a.getLast_name());
-			
-			ss.add(ssss);
-			
-			
-		}
 	
 		//System.out.println(searchresult.ne);
 		//List ss = (List) searchresult.iterator();
@@ -86,9 +74,6 @@ public class AdminController {
 		//List<List<SearchEngine>> cardsList = Arrays.asList(searchresult);
 		
 		//System.out.println(cardsList.);
-
-		System.out.println("**********************ddddddddddd*************" + ss);
-		//System.out.println("====================" + + "---------------------------------");
 		ModelAndView model = new ModelAndView("adminhome");
 		model.addObject("searchresult",searchresult);
 		return model;
