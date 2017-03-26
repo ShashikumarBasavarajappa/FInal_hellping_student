@@ -1,15 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/>
+    <!-- <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/> -->
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/shaashi.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/profile.css" rel="stylesheet"/>
+    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/tabledesign.css" rel="stylesheet"/>
     
             
         <style type="text/css">
@@ -19,6 +21,10 @@
 			}
 			.no-background {
 			    background-image: url("images/blank.jpg");
+			}
+			
+			#sampleForm{
+			padding-right:30%;
 			}
 			 
         </style>
@@ -38,7 +44,7 @@
       <li><a href="#" class="active">Search</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
     
@@ -47,9 +53,9 @@
 </nav>
 
 
-  <h2>Main Design Bar</h2>
-  <p>We Are developed lot thing here ....................</p>
-<p> rrrrrrrrrrrrrrrrr     ${admindetails} </p>
+  <h2>Main Design Bar By SHASHIKUMAR</h2>
+
+
   <div class="container-fluid">
             <div class="well-searchbox">
                 <form id="sampleForm" class="form-horizontal" action="Adminsearch" method-="get">
@@ -105,37 +111,39 @@
                     </div>
                     <div class="col-sm-offset-4 col-sm-5">
                         <button type="submit" class="btn btn-success">Search</button>
-						<h1>${searchresult}</h1>                        
+						                        
                     </div>
                 </form>
             </div>
             </div>
             &nbsp;
 &nbsp;
-
-    <table class="table table-bordered table-inverse"  >
-                   <thead style="background-color: black;color:red;"   >
+   
+    <table class="table table-bordered table-inverse">
+                   <thead class="thead-inverse">
                     <tr>
-                      <th>#</th>
                       <th>First Name</th>
+                      <th>Last Name</th>
                       <th>Email</th>
                       <th>Accept/Reject</th>
                     </tr>
                   </thead>
                   <tbody>
-                  
-                  <c:forEach var="emp" items="${searchresult}">   
-					
+
+                    <c:forEach items="${searchresult}" var="emp"> 
                     <tr>
+                       <td>${emp.first_name}</td>                      
                        <td>${emp.last_name}</td>
-                       <td>${emp.first_name}</td>
                        <td>${emp.email}</td>
-                       <td>
-                           <input type="checkbox" checked data-toggle="toggle" data-style="android" data-onstyle="info">
-                       </td>
+                   	<td><label class="switch">
+							  <input type="checkbox">
+							  <div class="slider round"></div>
+							</label>
+							</td>
                     </tr>
+                   </c:forEach>
                   </tbody>
-                 </c:forEach>  
+
 	</table> 
 </div>
 

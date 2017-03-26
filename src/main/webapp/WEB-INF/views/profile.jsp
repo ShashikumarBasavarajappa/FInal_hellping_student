@@ -12,6 +12,7 @@
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
     -->
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/profile.css" rel="stylesheet"/>
+    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/tabledesign.css" rel="stylesheet"/>
     
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/jquery/js/profile.js"></script>
@@ -33,7 +34,7 @@
     
 
 </head>
-<body>
+<body id="fancy">
 <div class="container">
 <div class="head">
     <h1>Profile_Page</h1>
@@ -47,10 +48,10 @@
     <ul class="nav navbar-nav">
       <li><a href="#">Home</a></li>
       <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
-      <li><a href="#" class="active">Search</a></li>
+      <li><a href="search_redirt/${profileresult.id}" class="active">Search</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
     

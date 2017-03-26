@@ -21,16 +21,31 @@ import javassist.bytecode.Descriptor.Iterator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 @Controller
 public class AdminController {
 
 	@Autowired
 	AdminDAO adminDao;
 	RegisterDAO regDao;
+	@RequestMapping(value="/adminprofile/search_redirt/{id}")
+    public ModelAndView search_redirt(@PathVariable int id) {
+
+		SearchEngine profileresult = adminDao.getAdminDetails(id);
+
+        System.out.println("----------------------------------" + profileresult.getFirst_name());
+        ModelAndView model = new ModelAndView("adminhome");
+        model.addObject("admindetails", profileresult);
+        
+        return model;
+    }
+
+	
 	@RequestMapping(value="/Adminsearch", method = RequestMethod.GET)
 	public ModelAndView registersave(@ModelAttribute("search") SearchEngine search) throws IOException{
 
@@ -40,7 +55,14 @@ public class AdminController {
 		//regDao.save(registration);
 		//SearchEngine ss = (SearchEngine) adminDao.searchAdmin(searchtext);
 		List<SearchEngine> searchresult = adminDao.searchAdmin(search);
+		
+		
+		
 	
+		//System.out.println(searchresult.ne);
+		//List ss = (List) searchresult.iterator();
+		//while(ss.it)
+   	  
 		//for (int i = 0; i < ss.size(); i++) {
 			//System.out.println("*********************"  + ss + "-------------------------");
 		////}
@@ -53,15 +75,6 @@ public class AdminController {
 		//List<List<SearchEngine>> cardsList = Arrays.asList(searchresult);
 		
 		//System.out.println(cardsList.);
-
-
-		for (SearchEngine e : searchresult) {
-			SearchEngine sss =  (SearchEngine) e;
-		    System.out.println("============================999999999999" + sss.getEmail() + "=============" + sss.getPassword() + "=======================6666");
-		}
-		
-		 
-		//System.out.println("====================" + + "---------------------------------");
 		ModelAndView model = new ModelAndView("adminhome");
 		model.addObject("searchresult",searchresult);
 		return model;
@@ -98,5 +111,12 @@ public class AdminController {
         
         return model;
     }
-	
+    
+		 @RequestMapping(value="/logout",method = RequestMethod.GET)
+	        public String logout(HttpServletRequest request){
+	            HttpSession httpSession = request.getSession();
+	            httpSession.invalidate();
+	            return "redirect:/";
+	        }
+		
 }

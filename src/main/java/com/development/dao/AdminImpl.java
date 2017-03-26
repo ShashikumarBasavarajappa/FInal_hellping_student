@@ -42,9 +42,24 @@ public class AdminImpl  implements AdminDAO{
 		// TODO Auto-generated method stub
     	  Session session = sessionFactory.getCurrentSession();
     	   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", searchtext.getEmail(),MatchMode.ANYWHERE));
-    	   
+    	  
     	   List<SearchEngine> searchresult = cr.list();
+    	  // List<SearchEngine> searchresult1 = cr.uniqueResult();
+    	   //System.out.println(searchresult1);
+    	   
+    	  // SearchEngine sss = (SearchEngine)cr.uniqueResult();
+    	   if(searchresult.size() == 0){
+    		   return null;
+    	   }
+    	   else{
+    		   //Iterator<St = new type();> 
     	
+    		   return searchresult;
+    	   }
+     	  
+    	   
+    	
+//    	   	while(searchresult.ne)
     	  // System.out.println("888888**************************************" + searchresult.getClass().getName() + "=======");
     	   
     	   
@@ -81,14 +96,6 @@ public class AdminImpl  implements AdminDAO{
                      */
     	  // List list = Arrays.asList(searchresult);
     	  // searchresult.get
-    	   if(searchresult.size() == 0){
-    		   return null;
-    	   }
-    	   else{
-    		   //Iterator<St = new type();>
-    	
-    		   return searchresult;
-    	   }
 	}
 
 	@Override
@@ -131,7 +138,9 @@ public class AdminImpl  implements AdminDAO{
 		return sps;
 	}
 
-	public SearchEngine getDetails(int id){
+	@Override
+	@Transactional		
+	public SearchEngine getAdminDetails(int id){
 		System.out.println("9999999999999***9999999999" + id);
 		Session session = sessionFactory.getCurrentSession();
 	
@@ -142,6 +151,16 @@ public class AdminImpl  implements AdminDAO{
 		
 	}
 	
+	public SearchEngine getDetails(int id){
+		System.out.println("9999999999999***9999999999" + id);
+		Session session = sessionFactory.getCurrentSession();
+	
+		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
+		System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
+		
+		return ss;
+		
+	}
     
 	//@Override
 	//

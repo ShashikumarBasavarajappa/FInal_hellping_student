@@ -10,6 +10,7 @@ public interface AdminDAO {
 	public List<SearchEngine> searchAdmin(SearchEngine searchtext);
     
     public  SearchEngine profiledetails(String email);
+    public  SearchEngine getAdminDetails(int id);
     public SearchEngine profilesave(SearchEngine profile_save);
     
     //System.out.println("=======sdfadsfds===" + email);
