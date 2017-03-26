@@ -106,7 +106,7 @@
                     </div>
                     <div class="col-sm-offset-4 col-sm-5">
                         <button type="submit" class="btn btn-success">Search</button>
-						<h1>${searchresult}</h1>                        
+						                        
                     </div>
                 </form>
             </div>
@@ -117,18 +117,18 @@
     <table class="table table-bordered table-inverse"  >
                    <thead style="background-color: black;color:red;"   >
                     <tr>
-                      <th>#</th>
                       <th>First Name</th>
+                      <th>Last Name</th>
                       <th>Email</th>
                       <th>Accept/Reject</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style="background-color: white;color:red;">
 
                     <c:forEach items="${searchresult}" var="emp"> 
                     <tr>
                        <td>${emp.first_name}</td>                      
-                       <td>${emp.first_name}</td>
+                       <td>${emp.last_name}</td>
                        <td>${emp.email}</td>
                    
                     </tr>
