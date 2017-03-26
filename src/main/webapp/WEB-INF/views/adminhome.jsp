@@ -22,6 +22,10 @@
 			.no-background {
 			    background-image: url("images/blank.jpg");
 			}
+			
+			#sampleForm{
+			padding-right:30%;
+			}
 			 
         </style>
     
@@ -40,7 +44,7 @@
       <li><a href="#" class="active">Search</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
     
@@ -49,9 +53,9 @@
 </nav>
 
 
-  <h2>Main Design Bar</h2>
-  <p>We Are developed lot thing here ....................</p>
-<p> rrrrrrrrrrrrrrrrr     ${admindetails} </p>
+  <h2>Main Design Bar By SHASHIKUMAR</h2>
+
+
   <div class="container-fluid">
             <div class="well-searchbox">
                 <form id="sampleForm" class="form-horizontal" action="Adminsearch" method-="get">

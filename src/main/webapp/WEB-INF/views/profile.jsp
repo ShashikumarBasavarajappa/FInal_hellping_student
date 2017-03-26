@@ -51,7 +51,7 @@
       <li><a href="search_redirt/${profileresult.id}" class="active">Search</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+      <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
     
