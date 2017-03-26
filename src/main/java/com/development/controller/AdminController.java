@@ -21,6 +21,7 @@ import javassist.bytecode.Descriptor.Iterator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,19 @@ public class AdminController {
 	@Autowired
 	AdminDAO adminDao;
 	RegisterDAO regDao;
+	@RequestMapping(value="/adminprofile/search_redirt/{id}")
+    public ModelAndView search_redirt(@PathVariable int id) {
+
+		SearchEngine profileresult = adminDao.getAdminDetails(id);
+
+        System.out.println("----------------------------------" + profileresult.getFirst_name());
+        ModelAndView model = new ModelAndView("adminhome");
+        model.addObject("admindetails", profileresult);
+        
+        return model;
+    }
+
+	
 	@RequestMapping(value="/Adminsearch", method = RequestMethod.GET)
 	public ModelAndView registersave(@ModelAttribute("search") SearchEngine search) throws IOException{
 
@@ -40,7 +54,26 @@ public class AdminController {
 		//regDao.save(registration);
 		//SearchEngine ss = (SearchEngine) adminDao.searchAdmin(searchtext);
 		List<SearchEngine> searchresult = adminDao.searchAdmin(search);
+		
+		
+		
+		List<SearchEngine> ss = new ArrayList<SearchEngine>();
+		SearchEngine ssss = new SearchEngine();
+		
+		for (SearchEngine a : ss){
+			ssss.setEmail(a.getEmail());	
+			ssss.setFirst_name(a.getFirst_name());
+			ssss.setLast_name(a.getLast_name());
+			
+			ss.add(ssss);
+			
+			
+		}
 	
+		//System.out.println(searchresult.ne);
+		//List ss = (List) searchresult.iterator();
+		//while(ss.it)
+   	  
 		//for (int i = 0; i < ss.size(); i++) {
 			//System.out.println("*********************"  + ss + "-------------------------");
 		////}
@@ -54,13 +87,7 @@ public class AdminController {
 		
 		//System.out.println(cardsList.);
 
-
-		for (SearchEngine e : searchresult) {
-			SearchEngine sss =  (SearchEngine) e;
-		    System.out.println("============================999999999999" + sss.getEmail() + "=============" + sss.getPassword() + "=======================6666");
-		}
-		
-		 
+		System.out.println("**********************ddddddddddd*************" + ss);
 		//System.out.println("====================" + + "---------------------------------");
 		ModelAndView model = new ModelAndView("adminhome");
 		model.addObject("searchresult",searchresult);
@@ -98,5 +125,7 @@ public class AdminController {
         
         return model;
     }
-	
+    
+		
+		
 }

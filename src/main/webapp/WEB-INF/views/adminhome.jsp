@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -112,7 +113,7 @@
             </div>
             &nbsp;
 &nbsp;
-
+   
     <table class="table table-bordered table-inverse"  >
                    <thead style="background-color: black;color:red;"   >
                     <tr>
@@ -123,19 +124,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                  
-                  <c:forEach var="emp" items="${searchresult}">   
-					
+
+                    <c:forEach items="${searchresult}" var="emp"> 
                     <tr>
-                       <td>${emp.last_name}</td>
+                       <td>${emp.first_name}</td>                      
                        <td>${emp.first_name}</td>
                        <td>${emp.email}</td>
-                       <td>
-                           <input type="checkbox" checked data-toggle="toggle" data-style="android" data-onstyle="info">
-                       </td>
+                   
                     </tr>
+                   </c:forEach>
                   </tbody>
-                 </c:forEach>  
+
 	</table> 
 </div>
 

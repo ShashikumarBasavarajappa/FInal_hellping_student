@@ -33,7 +33,7 @@
     
 
 </head>
-<body>
+<body id="fancy">
 <div class="container">
 <div class="head">
     <h1>Profile_Page</h1>
@@ -47,7 +47,7 @@
     <ul class="nav navbar-nav">
       <li><a href="#">Home</a></li>
       <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
-      <li><a href="#" class="active">Search</a></li>
+      <li><a href="search_redirt/${profileresult.id}" class="active">Search</a></li>
     </ul>
      <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logout</a></li>

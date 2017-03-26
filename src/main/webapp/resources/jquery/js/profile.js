@@ -41,10 +41,10 @@ $(document).ready(function () {
     	//var frm = $('#submitForm');
     	$('#save_button').fancybox();
     	$.ajax({
-			url : $('#profilepage').attr('action'),
+			url : 'action',
 			data : data,
 			type : "GET",
-			success : function(response) {
+			success : function(data) {
 				alert( response );
 			},
 			error: function(){      
