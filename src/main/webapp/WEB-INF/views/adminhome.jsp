@@ -126,6 +126,7 @@
                       <th>Last Name</th>
                       <th>Email</th>
                       <th>Accept/Reject</th>
+                      <th>View/Application</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -140,6 +141,7 @@
 							  <div class="slider round"></div>
 							</label>
 							</td>
+							<td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
                     </tr>
                    </c:forEach>
                   </tbody>
