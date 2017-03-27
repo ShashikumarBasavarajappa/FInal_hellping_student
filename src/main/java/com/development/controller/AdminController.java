@@ -1,5 +1,6 @@
 package com.development.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.hibernate.search.Search;
@@ -24,9 +25,19 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdminController {
 
@@ -118,5 +129,75 @@ public class AdminController {
 	            httpSession.invalidate();
 	            return "redirect:/";
 	        }
+		 
+
+		 @RequestMapping(value="/downloadPDF/{email}",method = RequestMethod.GET)
+	        public ModelAndView downloadPDF(HttpServletRequest request, HttpServletResponse response,@PathVariable String email){
+	            //HttpSession httpSession = request.getSession();
+	            //httpSession.invalidate();
+			 //System.out.println("------------------------" + email);
+			 //List<SearchEngine> listBooks  = new ArrayList<SearchEngine>();
+
+				final ServletContext servletContext = request.getSession().getServletContext();
+			    final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+			    final String temperotyFilePath = tempDirectory.getAbsolutePath();
+
+			    String fileName = "Resume.pdf";
+			    response.setContentType("application/pdf");
+			    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
+			    String email1 ="shashi2466@gmail.com";
+		        SearchEngine profileresult = adminDao.profiledetails(email);
+			    try {
+
+			        CreatePDF.createPDF(temperotyFilePath+"\\"+fileName,profileresult);
+			        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
+			        OutputStream os = response.getOutputStream();
+			        baos.writeTo(os);
+			        os.flush();
+			    } catch (Exception e1) {
+			        e1.printStackTrace();
+			    }
+
+		 
+		        // return a view which will be resolved by an excel view resolver
+		        //return new ModelAndView("pdfView", "listBooks", listBooks);
+			 ModelAndView model = new ModelAndView("adminhome");
+		//		model.addObject("searchresult",searchresult);
+				return model;
+				
+		 
+		 }
+			
+			private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
+
+				InputStream inputStream = null;
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				try {
+
+					inputStream = new FileInputStream(fileName);
+					byte[] buffer = new byte[1024];
+					baos = new ByteArrayOutputStream();
+
+					int bytesRead;
+					while ((bytesRead = inputStream.read(buffer)) != -1) {
+						baos.write(buffer, 0, bytesRead);
+					}
+
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					if (inputStream != null) {
+						try {
+							inputStream.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+				return baos;
+			}
 		
 }
