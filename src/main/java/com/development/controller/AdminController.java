@@ -130,6 +130,13 @@ public class AdminController {
 	            return "redirect:/";
 	        }
 		 
+    
+		 @RequestMapping(value="/about_us",method = RequestMethod.GET)
+	        public ModelAndView about_us(HttpServletRequest request){
+	            ModelAndView model = new ModelAndView("about_us");
+	            return model;
+	        }
+
 
 		 @RequestMapping(value="/downloadPDF/{email}",method = RequestMethod.GET)
 	        public ModelAndView downloadPDF(HttpServletRequest request, HttpServletResponse response,@PathVariable String email){

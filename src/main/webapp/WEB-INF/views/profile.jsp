@@ -16,11 +16,10 @@
     
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/jquery/js/profile.js"></script>
+
     
-    <script src="<%=request.getContextPath() %>/resources/jquery/js/Image.js"></script>
+   <script src="<%=request.getContextPath() %>/resources/jquery/js/Image.js"></script> 
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
-   
-            
         <style type="text/css">
                     
             body {
@@ -34,7 +33,7 @@
     
 
 </head>
-<body id="fancy">
+<body>
 <div class="container">
 <div class="head">
     <h1>Profile_Page</h1>

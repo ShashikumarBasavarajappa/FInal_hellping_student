@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	
 	//$('#profilepage').each( function() { $(this).attr('readonly', true); });
 	//$("#email :input").attr("disabled", true);
 	$("#email").attr('disabled','disabled');
@@ -17,7 +18,7 @@ $(document).ready(function () {
     	$("#password").removeAttr('disabled');
     	$("#id").removeAttr('disabled');
     	
-    	$('#edit_button').attr('disabled','disabled');
+    	$('#edit_button').attr('disabled', 'disabled');
     	//$('#save_button').removeAttr('disabled');
     	$('#save_button').prop('disabled', false); 
     	return false;

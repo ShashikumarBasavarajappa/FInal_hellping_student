@@ -42,8 +42,10 @@
       <li><a href="#">Home</a></li>
       <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
       <li><a href="#" class="active">Search</a></li>
+
     </ul>
      <ul class="nav navbar-nav navbar-right">
+     <li><a href="about_us" class="active">About Us</a></li>
       <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
