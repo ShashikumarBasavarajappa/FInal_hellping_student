@@ -1,6 +1,7 @@
 package com.development.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,16 +14,17 @@ import org.hibernate.search.annotations.Store;
 @Table(name="Registration")
 public class Registration {
 
+	@Id
+	@Field
+	@GeneratedValue
 	private int id;
 	@Field
 	private String first_name;
 	private String last_name;
-	@Id
-	@Field
 	private String email;
 	private String password;
 	private String password_confirmation;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -61,6 +63,6 @@ public class Registration {
 		this.email = email;
 	}
 
-	
-	
+
+
 }

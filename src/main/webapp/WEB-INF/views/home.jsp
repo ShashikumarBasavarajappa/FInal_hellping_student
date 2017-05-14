@@ -57,7 +57,7 @@
         <div class="container">
             <header class="jumbotron hero-spacer">
                 <h4>WELCOME TO MY APPLICATION</h4>
-                <legend> Designed By ${printme} WEB APPLICATION</legend>
+                <legend style="text-align: center"> Designed By ${printme} WEB APPLICATION</legend>
             </header>
             <!--login  form come here --> 
             <form class="form-horizontal" method="post" action="signin">

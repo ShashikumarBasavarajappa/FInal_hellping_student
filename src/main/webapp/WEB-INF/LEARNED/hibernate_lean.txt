@@ -1,0 +1,38 @@
+step1 day,
+
+* hibernate  means the logoff from this
+* ORM Based application
+
+This should be usefull when we are doing the secured
+
+Hibernate will help in DAO part(Data access object)
+
+If we go through the JDBC what will happen we will check easily
+
+EJB will not give Secure code for the things
+prevously IF we made multi user action then it's failing for multi user_id
+
+EJB session and EJB entity class we can make the BUSINESS AND DAO class
+
+Application server -> JBOSS, Glasss fish server , Web logic
+
+Switching the Database in the hibernate it's easy
+
+
+example for facebook
+
+first time login it will take 10 minutes so it take time to refresh
+
+next time onwards it will load in the seconds
+
+EJB Query launguage is there, it will create the object from that we can use that object, then which are the DB changed also we can
+do it easily
+
+Enterpricess application   simple query idea will not required,
+
+NOrmal procedure,
+
+JDBC query you wrote then we need that
+server to read the class data based on the fields
+
+TO overcome all the issue we developed the HIBERnate

@@ -16,6 +16,8 @@ import org.postgresql.core.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.development.controller.AdminController;
+import com.development.model.Archived_user;
+import com.development.model.Notification;
 import com.development.model.Registration;
 import com.development.model.SearchEngine;
 import com.development.model.User;
@@ -25,52 +27,52 @@ import javassist.bytecode.Descriptor.Iterator;
 public class AdminImpl  implements AdminDAO{
 
 
-	
+
 	private SessionFactory sessionFactory;
-	
-	
+
+
 	private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
-	
+
     public AdminImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    @Transactional	
+    @Transactional
 	public List<SearchEngine> searchAdmin(SearchEngine searchtext) {
 		// TODO Auto-generated method stub
     	  Session session = sessionFactory.getCurrentSession();
     	   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", searchtext.getEmail(),MatchMode.ANYWHERE));
-    	  
+
     	   List<SearchEngine> searchresult = cr.list();
     	  // List<SearchEngine> searchresult1 = cr.uniqueResult();
     	   //System.out.println(searchresult1);
-    	   
+
     	  // SearchEngine sss = (SearchEngine)cr.uniqueResult();
     	   if(searchresult.size() == 0){
     		   return null;
     	   }
     	   else{
-    		   //Iterator<St = new type();> 
-    	
+    		   //Iterator<St = new type();>
+
     		   return searchresult;
     	   }
-     	  
-    	   
-    	
+
+
+
 //    	   	while(searchresult.ne)
     	  // System.out.println("888888**************************************" + searchresult.getClass().getName() + "=======");
-    	   
-    	   
-    	  
+
+
+
     	  /*
     	  Query query=(Query) session.createQuery("from Registration where email = :email");
     	  ((org.hibernate.Query) query).
           setParameter("email", searchtext);
-    	  
+
     	  List<SearchEngine> companyList  = ((Criteria) query).list();
-    	  
+
            System.out.println("-----------------------------===========================amma========" + companyList.isEmpty() + "=============");
 
     	  */
@@ -84,22 +86,22 @@ public class AdminImpl  implements AdminDAO{
                   .keyword().onField("first_name")
                   .matching(searchtext)
                   .createQuery();
-                org.hibernate.Query hibQuery = 
+                org.hibernate.Query hibQuery =
                         fullTextSession.createFullTextQuery(query, SearchEngine.class);
                 //System.out.println("---------------------adddddddddd " + qb.toString() + "==================");
                      List<SearchEngine> results = hibQuery.list();
                      //List rr = hibQuery.list();
                      //List<SearchEngine> results  = ((SearchEngine) hibQuery).getResultList();
-                     
+
                      System.out.println("===========================amma========" + results.size() + "=============");
-                      
+
                      */
     	  // List list = Arrays.asList(searchresult);
     	  // searchresult.get
 	}
 
 	@Override
-	@Transactional	
+	@Transactional
 	public SearchEngine profiledetails(String email) {
 		// TODO Auto-generated method stub
   		  Session session = sessionFactory.getCurrentSession();
@@ -111,14 +113,14 @@ public class AdminImpl  implements AdminDAO{
     	  //}
     	   //else{
     		 //  //Iterator<St = new type();>
-    	
+
     		   //return null;
     	   //}
 
 	}
 
 	@Override
-	@Transactional		
+	@Transactional
 	public SearchEngine profilesave(SearchEngine profile_save) {
 		System.out.println("********************************************************hhh888888*************");
 		// TODO Auto-generated method stub
@@ -139,30 +141,56 @@ public class AdminImpl  implements AdminDAO{
 	}
 
 	@Override
-	@Transactional		
+	@Transactional
 	public SearchEngine getAdminDetails(int id){
 		System.out.println("9999999999999***9999999999" + id);
 		Session session = sessionFactory.getCurrentSession();
-	
+
 		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
 		System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
-		
+
 		return ss;
-		
+
 	}
-	
+
 	public SearchEngine getDetails(int id){
 		System.out.println("9999999999999***9999999999" + id);
 		Session session = sessionFactory.getCurrentSession();
-	
+
 		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
 		System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
-		
+
 		return ss;
-		
+
 	}
-    
-	//@Override
-	//
-	
+
+	@Override
+@Transactional
+public Notification getnotificationresult(int id) {
+	// TODO Auto-generated method stub
+  System.out.println("=======================99999===" + id);
+	Session session = sessionFactory.getCurrentSession();
+	Notification Notificatonresult = (Notification) session.get(Notification.class, id);
+
+	return Notificatonresult;
+}
+
+	@Override
+	@Transactional
+	public Archived_user archive_user(Archived_user archive_user) {
+		// TODO Auto-generated method stub
+
+		Session session = this.sessionFactory.getCurrentSession();
+
+		System.out.println("=======ammaa================" + archive_user.getEmail());;
+		
+		//archive_user.setEmail("shashi");
+		session.persist(archive_user);
+
+		return null;
+
+	}
+
+
+
 }

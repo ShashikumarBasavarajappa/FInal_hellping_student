@@ -85,7 +85,14 @@
 		    <artifactId>fancybox</artifactId>
 		    <version>2.1.5</version>
 		</dependency>
+		
+		<!-- mail server setup class -->
 
+
+		
+		<!--  Closing the mail server  -->
+
+		
 		<!-- Servlet Spec -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

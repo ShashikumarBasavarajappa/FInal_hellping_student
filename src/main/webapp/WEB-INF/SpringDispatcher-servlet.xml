@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+<beans xsi:schemaLocation="http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc.xsd
- http://www.springframework.org/schema/beans 
- http://www.springframework.org/schema/beans/spring-beans.xsd 
- http://www.springframework.org/schema/tx 
- http://www.springframework.org/schema/tx/spring-tx.xsd 
+ http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/tx
+ http://www.springframework.org/schema/tx/spring-tx.xsd
  http://www.springframework.org/schema/context
-  http://www.springframework.org/schema/context/spring-context.xsd" 
-  xmlns:tx="http://www.springframework.org/schema/tx" 
-  xmlns:context="http://www.springframework.org/schema/context" 
-  xmlns="http://www.springframework.org/schema/beans" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  http://www.springframework.org/schema/context/spring-context.xsd"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:mvc="http://www.springframework.org/schema/mvc">
 
 
@@ -21,71 +21,74 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 <mvc:resources location="/resources/" mapping="/resources/**"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	
+
 		<property value="/WEB-INF/views/" name="prefix"/>
-		
+
 		<property value=".jsp" name="suffix"/>
-	
+
 	</bean>
 
 <context:component-scan base-package="com.development"/>
 
 
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"  id="dataSource">
-	
+
 		<property value="org.postgresql.Driver" name="driverClassName"/>
-		
+
 		<property value="jdbc:postgresql://localhost:5432/helpping_students" name="url"/>
-		
+
 		<property value="postgres" name="username"/>
-		
+
 		<property value="shashi" name="password"/>
-		
+
 	</bean>
+
+
 
 
 	<bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" id="sessionFactory">
 
 		<property name="dataSource" ref="dataSource"/>
-		
+
 		<property value="/WEB-INF/hibernate.cfg.xml" name="configLocation"/>
-	
+
 	</bean>
 
 
 
 	<bean class="org.springframework.orm.hibernate4.HibernateTransactionManager" id="transactionManager">
-	
+
 		<property name="sessionFactory" ref="sessionFactory"/>
-	
+
 	</bean>
 
 
 	<bean class="com.development.dao.UserDAOImpl" id="userDao">
 
 	<constructor-arg>
-	
+
 		<ref bean="sessionFactory"/>
-	
+
 	</constructor-arg>
 
 </bean>
 	<bean class="com.development.dao.RegistrationImpl" id="regDao">
 		<constructor-arg>
-		
+
 			<ref bean="sessionFactory"/>
-		
+
 		</constructor-arg>
-	
+
 	</bean>
 
 	<bean class="com.development.dao.AdminImpl" id="adminDao">
 		<constructor-arg>
-		
+
 			<ref bean="sessionFactory"/>
-		
+
 		</constructor-arg>
-	
+
 	</bean>
+
 
 </beans>

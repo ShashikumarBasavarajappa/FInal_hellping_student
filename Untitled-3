@@ -1,0 +1,24 @@
+select count(standard_status_id),standard_status_id from notes 
+where type='rejoinder_prtcoord_scor' and program_id=221
+group by standard_status_id
+having count(standard_status_id)>1
+
+select count(standard_status_id),standard_status_id from notes 
+where type='rejoinder_prtcoord_comment' and program_id=221
+group by standard_status_id
+having count(standard_status_id)>1
+
+
+
+
+update notes set type='rejoinder_prtcoord_score_221_duplicate' where id in (
+select min(id) from notes 
+where type='rejoinder_prtcoord_score' and program_id=221
+group by standard_status_id
+having count(standard_status_id)>1)
+
+update notes set type='rejoinder_prtcoord_comment_221_duplicate' where id in (
+select min(id) from notes 
+where type='rejoinder_prtcoord_comment' and program_id=221
+group by standard_status_id
+having count(standard_status_id)>1)
