@@ -33,13 +33,25 @@ public class SearchEngine {
 		private String email;
 		@Column(name = "password")
 		private String password;
+		private int is_archived;
 		private String password_confirmation;
+
 		public int getId() {
 			return id;
 		}
 		public void setId(int id) {
 			this.id = id;
 		}
+		
+		public int getIs_archived() {
+			return is_archived;
+		}
+		
+		public void setIs_archived(int is_archived) {
+			this.is_archived = is_archived;
+		}
+		
+		
 		public String getFirst_name() {
 			return first_name;
 		}

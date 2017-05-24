@@ -23,6 +23,7 @@ public class Registration {
 	private String last_name;
 	private String email;
 	private String password;
+	private int is_archived;
 	private String password_confirmation;
 
 	public int getId() {
@@ -31,6 +32,14 @@ public class Registration {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public int getIs_archived() {
+		return is_archived;
+	}
+	public void setIs_archived(int is_archived) {
+		this.is_archived = is_archived;
+	}
+	
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -47,6 +56,7 @@ public class Registration {
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}

@@ -182,15 +182,27 @@ public Notification getnotificationresult(int id) {
 
 		Session session = this.sessionFactory.getCurrentSession();
 
-		System.out.println("=======ammaa================" + archive_user.getEmail());;
-		
+		System.out.println("=======ammaa================" + archive_user.getId());;
+		System.out.println("-----------------------sssssssssssssss-----------------eeeeeeeee ");
 		//archive_user.setEmail("shashi");
+		int id  = archive_user.getId();
+		SearchEngine aa  = archiveupdate(id);
 		session.persist(archive_user);
+
 
 		return null;
 
 	}
 
-
-
+	public SearchEngine archiveupdate (int id){
+		Session session = sessionFactory.getCurrentSession();
+		System.out.println("==============insnide the function====checking the changes==="+ id);
+		//int id = 1;
+//		SearchEngine ss = session.update(is_archived, id);
+		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
+		//System.out.println("==================checking the changes===" + ss.getFirst_name());
+		int my_id_value = 1;
+		ss.setIs_archived(my_id_value);
+		return null;
+	}
 }

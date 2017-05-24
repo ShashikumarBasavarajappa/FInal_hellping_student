@@ -97,8 +97,8 @@ public class AdminController {
 	@RequestMapping(value="/archive_user", method=RequestMethod.GET)
 	public ModelAndView archive_user (@ModelAttribute("archive_user") Archived_user archive_user){
 
-		System.out.println("=======****555555555555555555555****" + archive_user.getEmail());
-		String email  =  archive_user.getEmail();
+		System.out.println("=======****555555555555555555555****" + archive_user.getUser_id());
+		int id  =  archive_user.getId();
 		Archived_user au = adminDao.archive_user(archive_user);
 		return null;
 

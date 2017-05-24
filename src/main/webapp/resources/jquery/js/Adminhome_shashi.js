@@ -8,7 +8,7 @@ var shashi  =   $('#newsletter:checked').val();
   if(shashi){
      $("#archive_user").removeAttr('disabled');
       alert("---------------" + shashi);
-      var data = 'email=' + shashi;
+      var data = 'user_id=' + shashi;
       var url = $("#profilepage").attr("action");
 
       alert("url" + url + "data " + data);

@@ -156,7 +156,7 @@
                     <td>${emp.first_name}</td>
                     <td>${emp.last_name}</td>
                     <td>${emp.email}</td>
-                    <td><form  id="profilepage" action="archive_user" method="get"> <input type="checkbox" name="newsletter" id="newsletter" value="${emp.email}"></form></td>
+                    <td><form  id="profilepage" action="archive_user" method="get"> <input type="checkbox" name="newsletter" id="newsletter" value="${emp.id}"></form></td>
            <td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
                  </tr>
                 </c:forEach>

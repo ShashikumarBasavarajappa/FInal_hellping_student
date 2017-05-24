@@ -27,21 +27,27 @@ import org.hibernate.search.annotations.Indexed;
 @Table(name="Archived_user")
 public class Archived_user {
 
+	private int id;
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	@Field
-	
-	private int id;
+	private int user_id;
 	private String email;
-	
+
 	public int getId() {
 		return id;
 	}
-	
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}

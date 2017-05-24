@@ -5,8 +5,9 @@
 <hibernate-mapping package="com.development.model">
     <class name="Archived_user" table="Archived_user">
         <id name="id" column="ID">
-            <generator class="native"/>
+            <generator class="increment"/>
         </id>
+        <property name="user_id" column="user_id" />
         <property name="email" column="email" />
         
     </class> 
