@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
@@ -43,7 +44,8 @@ public class AdminImpl  implements AdminDAO{
 	public List<SearchEngine> searchAdmin(SearchEngine searchtext) {
 		// TODO Auto-generated method stub
     	  Session session = sessionFactory.getCurrentSession();
-    	   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", searchtext.getEmail(),MatchMode.ANYWHERE));
+    	   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", searchtext.getEmail(),MatchMode.ANYWHERE))
+    			   .add(Restrictions.eq("is_archived", 0));
 
     	   List<SearchEngine> searchresult = cr.list();
     	  // List<SearchEngine> searchresult1 = cr.uniqueResult();
@@ -182,12 +184,50 @@ public Notification getnotificationresult(int id) {
 
 		Session session = this.sessionFactory.getCurrentSession();
 
-		System.out.println("=======ammaa================" + archive_user.getId());;
+		System.out.println("=======ammaa================" + archive_user.getUser_id());;
 		System.out.println("-----------------------sssssssssssssss-----------------eeeeeeeee ");
 		//archive_user.setEmail("shashi");
-		int id  = archive_user.getId();
-		SearchEngine aa  = archiveupdate(id);
-		session.persist(archive_user);
+		int user_id  = archive_user.getUser_id();
+        //	SearchEngine aa  =
+		//  SQLQuery query = session.createSQLQuery("select e.user_id, e.email from Registration e where e.user_id=user_id");
+		//  List<SearchEngine> rows = query.list();
+
+		 // Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("user_id",user_id));
+		  //SearchEngine userresult = (SearchEngine) cr.uniqueResult();
+		  //System.out.println("===============le======" + userresult);
+
+
+		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, user_id);
+
+		//System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
+
+
+		Archived_user aa = new Archived_user();
+		aa.setUser_id(ss.getId());
+		aa.setEmail(ss.getEmail());
+		session.persist(aa);
+
+		ss.setIs_archived(1);
+		session.update(ss);
+
+		  /*
+		   *
+		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
+		System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
+
+		   */
+	    //  System.out.println("=================email kanappa =asdsadsadsa==" + rows);
+		//  for(SearchEngine ss : rows) {
+        //   System.out.println("=================email kanappa ===" + ss.getEmail());
+       // }
+
+	//System.out.println("========================good bye ===" + rows);
+		//Query query = (Query) session.createSQLQuery("select e.user_id, e.email from Registration e where e.user_id=user_id")
+		//		.setParameter("user_id", archive_user.getUser_id());
+		//session.persist(archive_user);
+	//	List result = ((Criteria) query).list();
+
+	//	System.out.println("=================== " + result);
 
 
 		return null;
