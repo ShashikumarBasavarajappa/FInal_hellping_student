@@ -5,12 +5,16 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.infinispan.lucene.ChunkCacheKey;
+
 import com.development.model.SearchEngine;
 import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -37,6 +41,11 @@ public class CreatePDF {
 	        
 			document.open();
 			
+			createheader(document);
+			
+			//for the space
+			document.add(Chunk.NEWLINE);
+			
 			createTable(document,profileresult);
 
 			document.close();
@@ -50,19 +59,48 @@ public class CreatePDF {
 		return document;
 
 	}
+	
+	private static void createheader(Document document) throws DocumentException {
+		//PdfPTable tabHead = new PdfPTable(new float[] { 1F });
+	    //PdfPCell cell;
+	    //tabHead.setWidthPercentage(70);
+	    //cell = new PdfPCell(new Phrase("Header"));
+	    //tabHead.addCell(cell);
+	    //tabHead.writeSelectedRows(0, -1, 150, document.top(), writer.DirectContent);
+	    //tabHead.writeSelectedRows(0, -1, 150, document.Top, writer.DirectContent);
+		PdfPTable table = new PdfPTable(1);
+		 table.setWidthPercentage(100.0f);
+	     table.setWidthPercentage(50);
+	     table.setSpacingBefore(10);
+	  // define font for table header row
+	     Font font = FontFactory.getFont(FontFactory.HELVETICA);
+	     font.setColor(BaseColor.WHITE);
+	     PdfPCell cell = new PdfPCell();
+	        cell.setBackgroundColor(BaseColor.BLUE);
+	        cell.setPadding(5);
+	        
+	        // write table header
+	        cell.setPhrase(new Phrase("SHASHIKUMAR the  PDF  craeteer", font));
+	        table.addCell(cell);
+	         
+	            
+	        document.add(table);
+	        
+	}
+
 	private static void createTable(Document document, SearchEngine profileresult) throws DocumentException {
 		Paragraph paragraph = new Paragraph();
 //		creteEmptyLine(paragraph, 2);
 		document.add(paragraph);
 		PdfPTable table = new PdfPTable(3);
 
-		 PdfPTable tabHead = new PdfPTable(new float[] { 1F });
-		    PdfPCell cell;
-		    tabHead.setWidthPercentage(100);
-		    cell = new PdfPCell(new Phrase("Header"));
-		    tabHead.addCell(cell);
-		    //tabHead.WriteSelectedRows(0, -1, 150, document.Top, writer.DirectContent);
 		PdfPCell c1 = new PdfPCell(new Phrase("EMAIL"));
+		
+		c1.setBackgroundColor(BaseColor.ORANGE);
+        table.addCell(c1);
+		
+		c1 = new PdfPCell(new Phrase("EMAIL"));
+		
 		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		table.addCell(c1);
 
@@ -79,6 +117,7 @@ public class CreatePDF {
 		
 		for (int i = 0; i < 1; i++) {
 			table.setWidthPercentage(100);
+		
 			table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 			table.addCell(profileresult.getEmail()); 

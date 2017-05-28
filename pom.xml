@@ -78,8 +78,21 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.9</version>
         </dependency>
-        
+		        
+		<!-- https://mvnrepository.com/artifact/org.webjars/fancybox -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>fancybox</artifactId>
+		    <version>2.1.5</version>
+		</dependency>
+		
+		<!-- mail server setup class -->
 
+
+		
+		<!--  Closing the mail server  -->
+
+		
 		<!-- Servlet Spec -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -93,6 +106,7 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		
 		<dependency>
             <groupId>org.springframework.security</groupId>

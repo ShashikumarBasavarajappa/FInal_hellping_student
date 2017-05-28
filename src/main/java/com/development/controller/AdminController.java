@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.development.dao.AdminDAO;
 import com.development.dao.RegisterDAO;
+import com.development.model.Archived_user;
+import com.development.model.Notification;
 import com.development.model.Registration;
 import com.development.model.SearchEngine;
 
@@ -52,11 +54,11 @@ public class AdminController {
         System.out.println("----------------------------------" + profileresult.getFirst_name());
         ModelAndView model = new ModelAndView("adminhome");
         model.addObject("admindetails", profileresult);
-        
+
         return model;
     }
 
-	
+
 	@RequestMapping(value="/Adminsearch", method = RequestMethod.GET)
 	public ModelAndView registersave(@ModelAttribute("search") SearchEngine search) throws IOException{
 
@@ -66,35 +68,47 @@ public class AdminController {
 		//regDao.save(registration);
 		//SearchEngine ss = (SearchEngine) adminDao.searchAdmin(searchtext);
 		List<SearchEngine> searchresult = adminDao.searchAdmin(search);
-		
-		
-		
-	
+
+
+
+
 		//System.out.println(searchresult.ne);
 		//List ss = (List) searchresult.iterator();
 		//while(ss.it)
-   	  
+
 		//for (int i = 0; i < ss.size(); i++) {
 			//System.out.println("*********************"  + ss + "-------------------------");
 		////}
 		//searchresult.
 		//List<SearchEngine> ss = (List<SearchEngine>) searchresult;
-		
+
 		//SearchEngine[] ss= (SearchEngine[])searchresult;
 		//ArrayList<SearchEngine> ss = new
-		
+
 		//List<List<SearchEngine>> cardsList = Arrays.asList(searchresult);
-		
+
 		//System.out.println(cardsList.);
 		ModelAndView model = new ModelAndView("adminhome");
 		model.addObject("searchresult",searchresult);
 		return model;
-		
+
 	}
+
+	@RequestMapping(value="/archive_user", method=RequestMethod.GET)
+	public ModelAndView archive_user (@ModelAttribute("archive_user") Archived_user archive_user){
+
+		System.out.println("=======****555555555555555555555****" + archive_user.getUser_id());
+		int user_id  =  archive_user.getUser_id();
+		Archived_user au = adminDao.archive_user(archive_user);
+		return null;
+
+	}
+
+
 
 	@RequestMapping(value="/adminprofile/profile_save", method = RequestMethod.GET)
 	public ModelAndView profile_save(@ModelAttribute("profile_save") SearchEngine profile_save) {
-		
+
 		//System.out.println("****************************" + first_name + "************" + last_name);
 
 		System.out.println("=======*********" + profile_save.getFirst_name());
@@ -119,18 +133,39 @@ public class AdminController {
         ModelAndView model = new ModelAndView("profile");
         model.addObject("profileresult",profileresult);
        // model.addObject("userList", listUsers);
-        
+
         return model;
     }
-    
+
 		 @RequestMapping(value="/logout",method = RequestMethod.GET)
 	        public String logout(HttpServletRequest request){
 	            HttpSession httpSession = request.getSession();
 	            httpSession.invalidate();
 	            return "redirect:/";
 	        }
-		 
 
+
+
+		 @RequestMapping(value="/about_us",method = RequestMethod.GET)
+	        public ModelAndView about_us(HttpServletRequest request){
+	            ModelAndView model = new ModelAndView("about_us");
+	            return model;
+	        }
+ // NOtification code started here please review below these lines only
+//notification breaking
+// Notification design doing know, we completed based on the Primary Key
+	     @RequestMapping(value="/notification/{id}")
+	        public ModelAndView notification(@PathVariable int id){
+	        	System.out.println("------------shashi ------" + id);
+				    Notification notificatonresult = adminDao.getnotificationresult(id);
+				    System.out.println("--------------------" + notificatonresult.getMessage());
+	                ModelAndView model = new ModelAndView("notification");
+				    model.addObject("notificatonresult",notificatonresult);
+	                return model;
+	     }
+//notification code completed here please stop here only
+
+//pdf coding don't change anything here please it's working fine
 		 @RequestMapping(value="/downloadPDF/{email}",method = RequestMethod.GET)
 	        public ModelAndView downloadPDF(HttpServletRequest request, HttpServletResponse response,@PathVariable String email){
 	            //HttpSession httpSession = request.getSession();
@@ -159,16 +194,16 @@ public class AdminController {
 			        e1.printStackTrace();
 			    }
 
-		 
+
 		        // return a view which will be resolved by an excel view resolver
 		        //return new ModelAndView("pdfView", "listBooks", listBooks);
 			 ModelAndView model = new ModelAndView("adminhome");
 		//		model.addObject("searchresult",searchresult);
 				return model;
-				
-		 
+
+
 		 }
-			
+
 			private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
 
 				InputStream inputStream = null;
@@ -199,5 +234,5 @@ public class AdminController {
 				}
 				return baos;
 			}
-		
+
 }

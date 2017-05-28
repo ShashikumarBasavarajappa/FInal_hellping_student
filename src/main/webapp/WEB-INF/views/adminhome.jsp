@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,23 +12,27 @@
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/profile.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/tabledesign.css" rel="stylesheet"/>
-    
-            
+
+    <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
+      <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+      <script src="<%=request.getContextPath() %>/resources/jquery/js/Adminhome_shashi.js"></script>
+
+
         <style type="text/css">
-			        
+
 			body {
 			    background-image: url("<%=request.getContextPath() %>/resources/images/back.png");
 			}
 			.no-background {
 			    background-image: url("images/blank.jpg");
 			}
-			
+
 			#sampleForm{
 			padding-right:30%;
 			}
-			 
+
         </style>
-    
+
 
 </head>
 <body>
@@ -42,12 +46,14 @@
       <li><a href="#">Home</a></li>
       <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
       <li><a href="#" class="active">Search</a></li>
+
     </ul>
      <ul class="nav navbar-nav navbar-right">
+     <li><a href="about_us" class="active">About Us</a></li>
       <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
+      <li><a href="notification/${admindetails.id}"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
-    
+
     <button class="btn btn-danger navbar-btn">Rejected Appliants</button>
   </div>
 </nav>
@@ -111,14 +117,14 @@
                     </div>
                     <div class="col-sm-offset-4 col-sm-5">
                         <button type="submit" class="btn btn-success">Search</button>
-						                        
+
                     </div>
                 </form>
             </div>
             </div>
             &nbsp;
 &nbsp;
-   
+
     <table class="table table-bordered table-inverse">
                    <thead class="thead-inverse">
                     <tr>
@@ -130,23 +136,37 @@
                     </tr>
                   </thead>
                   <tbody>
-
-                    <c:forEach items="${searchresult}" var="emp"> 
+                    <!--
+                    <c:forEach items="${searchresult}" var="emp">
                     <tr>
-                       <td>${emp.first_name}</td>                      
+                       <td>${emp.first_name}</td>
                        <td>${emp.last_name}</td>
                        <td>${emp.email}</td>
-                   	<td><label class="switch">
+                   	   <td><label class="switch">
 							  <input type="checkbox">
 							  <div class="slider round"></div>
 							</label>
-							</td>
-							<td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
+				       </td>
+				      <td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
                     </tr>
                    </c:forEach>
+                 -->
+                 <c:forEach items="${searchresult}" var="emp">
+              
+                 <tr>
+                    <td>${emp.first_name}</td>
+                    <td>${emp.last_name}</td>
+                    <td>${emp.email}</td>
+                    <td><form  id="profilepage" action="archive_user" method="get"> <input type="checkbox" name="newsletter" id="newsletter" value="${emp.id}"></form></td>
+           <td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
+                 </tr>
+     
+                </c:forEach>
                   </tbody>
 
-	</table> 
+	</table>
+  <br />
+    <button class="btn btn-danger navbar-btn" id="archive_user">Remove the User</button>
 </div>
 
 </body>

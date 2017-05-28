@@ -1,0 +1,43 @@
+part 3
+
+object ---------------------> hibernate
+operation.
+1. save for saving data persistent object
+2. update
+
+
+3. delete
+
+
+
+Save.
+ these are all the saving the data.
+
+a. persistent, transparent, ditached object.
+
+
+FRom UI
+users.
+id, name, email
+
+Table details.
+
+Student table (Table name)
+id name email.
+
+we have to do the persist data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- end of the process -->

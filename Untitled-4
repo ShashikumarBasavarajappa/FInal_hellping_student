@@ -1,0 +1,196 @@
+DBIx::Class::SQLMaker::_where_op_NEST(): -nest in search conditions is deprecated, you most probably wanted:
+{..., -and => [ \%cond0, \@cond1, \'cond2', \[ 'cond3', [ col => bind ] ], etc. ], ... } at /home/sbasavarajappa/ea_portal/LEAF/lib/LEAF/Controller/Email.pm line 341
+Use of uninitialized value in numeric ge (>=) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 124.
+Use of uninitialized value in numeric eq (==) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 124.
+Use of uninitialized value in numeric eq (==) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 124.
+Use of uninitialized value $step_name in string eq at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 124.
+Use of uninitialized value in numeric ge (>=) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 170.
+Use of uninitialized value in numeric gt (>) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 179.
+Use of uninitialized value in numeric ge (>=) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 183.
+Use of uninitialized value in numeric gt (>) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 204.
+Use of uninitialized value $stepfullname in string eq at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 204.
+Use of uninitialized value $stepfullname in string eq at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 204.
+Use of uninitialized value in numeric ge (>=) at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 270.
+[info] *** Request 1 (0.006/s) [22685] [Fri Apr 21 03:44:15 2017] ***
+[debug] Path is "/admin/pop_email"
+[debug] Found sessionid "a4659948ddcc30d002e014e41cad1b80a32bc218" in cookie
+[debug] Restored session "a4659948ddcc30d002e014e41cad1b80a32bc218"
+[debug] "POST" request for "admin/pending_edits/program/pop_email" from "10.10.14.58"
+[debug] Body Parameters are:
+.-------------------------------------+--------------------------------------.
+| Parameter                           | Value                                |
++-------------------------------------+--------------------------------------+
+| action_url                          | /admin/pending_edits/edit/273/appro- |
+|                                     | ve                                   |
+| decision                            | Approved                             |
+| edit_id                             | 273                                  |
+| template                            | email/pending_edits.tt               |
+'-------------------------------------+--------------------------------------'
+[debug] Displaying Admin Tab
+[debug] 1495760656
+[debug] Rendering template "email/account_approved.tt"
+[debug] Rendering template "email/pending_edits.tt"
+[debug] Displaying Admin Tab
+[info] Status messages: Pending Edits Approved.
+[debug] Rendering template "shared/email_pop.tt"
+[debug] Response Code: 200; Content-Type: text/html; charset=utf-8; Content-Length: unknown
+[info] Request took 1.674505s (0.597/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /admin/begin                                               | 0.822951s |
+|  -> /begin                                                 | 0.812260s |
+|   -> /populate_roles                                       | 0.787856s |
+|    -> /populate_role_permissions                           | 0.010711s |
+|    -> /can_see_sc_programs_table_on_home_page              | 0.001077s |
+|    -> /sitevisitor/setup_admin_tabs                        | 0.019511s |
+| /auto                                                      | 0.002405s |
+| /admin/admin                                               | 0.000223s |
+| /admin/pending_edits                                       | 0.000105s |
+| /admin/pop_email                                           | 0.496469s |
+|  -> /admin/pending_edit_notification                       | 0.429284s |
+|   -> /admin/check_email_restrictions                       | 0.000315s |
+|   -> /email/send_email                                     | 0.384310s |
+|  -> /admin/get_edit_line                                   | 0.028905s |
+|  -> /email/get_email_response                              | 0.017575s |
+| /end                                                       | 0.133441s |
+|  -> /admin/setup_admin_tabs                                | 0.039045s |
+|   -> /sitevisitor/setup_admin_tabs                         | 0.008975s |
+|  -> /programs/setup_program_tabs                           | 0.085772s |
+|  -> /populate_errors                                       | 0.000430s |
+|  -> /combine_msgs                                          | 0.000664s |
+|  -> /render                                                | 0.005880s |
+|   -> PHAB::View::TT->process                               | 0.004869s |
+'------------------------------------------------------------+-----------'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mail confirmation things
+
+
+
+
+
+
+
+
+Use of uninitialized value $template in concatenation (.) or string at /home/sbasavarajappa/ea_portal/LEAF/lib/LEAF/Controller/Admin/PendingEdits.pm line 566.
+[info] *** Request 15 (0.082/s) [22685] [Fri Apr 21 03:44:42 2017] ***
+[debug] Path is "/admin/pending_edits_edit"
+[debug] Arguments are "273/approve"
+[debug] Found sessionid "a4659948ddcc30d002e014e41cad1b80a32bc218" in cookie
+[debug] Restored session "a4659948ddcc30d002e014e41cad1b80a32bc218"
+[debug] "POST" request for "admin/pending_edits/edit/273/approve" from "10.10.14.58"
+[debug] Body Parameters are:
+.-------------------------------------+--------------------------------------.
+| Parameter                           | Value                                |
++-------------------------------------+--------------------------------------+
+| cc                                  |                                      |
+| email_body                          | <p>Dear Jaime Bodden, <br /><br /> - |
+|                                     | The edit change request to total nu- |
+|                                     | mber of employees at the health dep- |
+|                                     | artment by your health department h- |
+|                                     | as been Approved. Please login to e- |
+|                                     | -PHAB to verify the changes. <br />- |
+|                                     | <br /> Please do not reply to this - |
+|                                     | message. PHAB is unable to access e- |
+|                                     | lectronic responses to this e-mail.- |
+|                                     |  <br /> <br /> Sincerely,<br /> Pub- |
+|                                     | lic Health Accreditation Board<br /- |
+|                                     | > 1600 Duke Street, Suite 200<br />- |
+|                                     |  Alexandria, VA 22314<br /> (P) 703- |
+|                                     | .778.4549 <br /> (F) 703.778.4556</- |
+|                                     | p>                                   |
+| my_email_data                       | 1                                    |
+| program_id                          | 2815                                 |
+| subject                             | Decision on requested edits in e-PH- |
+|                                     | AB                                   |
+| to                                  | qwerty+5723@liaison-intl.com         |
+'-------------------------------------+--------------------------------------'
+[debug] Displaying Admin Tab
+[debug] 1495760683
+[error] DBIx::Class::Storage::DBI::_dbh_execute(): DBI Exception: DBD::ODBC::st execute failed: [FreeTDS][SQL Server]Cannot insert the value NULL into column 'name', table 'phab.dbo.schools'; column does not allow nulls. UPDATE fails. (SQL-23000) [state was 23000 now 01000]
+[FreeTDS][SQL Server]The statement has been terminated. (SQL-01000) [for Statement "UPDATE [schools] SET [name] = ?, [updated_on] = ? WHERE ( [id] = ? )" with ParamValues: 1=undef, 2='2017-04-21 03:44:43.000', 3=1404] at /home/sbasavarajappa/ea_portal/production_issue/PHAB/script/../lib/PHAB/Controller/Programs.pm line 3444
+[info] Status messages: Pending Edits Approved.
+[debug] Redirecting to "/admin/pending_edits/program/2815"
+[debug] Response Code: 302; Content-Type: text/html; charset=utf-8; Content-Length: unknown
+[info] Request took 1.147904s (0.871/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /admin/begin                                               | 0.627347s |
+|  -> /begin                                                 | 0.616810s |
+|   -> /populate_roles                                       | 0.588342s |
+|    -> /populate_role_permissions                           | 0.005945s |
+|    -> /can_see_sc_programs_table_on_home_page              | 0.000853s |
+|    -> /sitevisitor/setup_admin_tabs                        | 0.005966s |
+| /auto                                                      | 0.004422s |
+| /admin/admin                                               | 0.000199s |
+| /admin/pending_edits                                       | 0.000215s |
+| /admin/pending_edits_edit                                  | 0.467559s |
+|  -> /programs/review_edit                                  | 0.022695s |
+|  -> /admin/pending_edit_notification                       | 0.292044s |
+|   -> /admin/check_email_restrictions                       | 0.000449s |
+|   -> /email/send_email                                     | 0.282977s |
+|  -> /admin/get_edit_line                                   | 0.040042s |
+| /end                                                       | 0.002950s |
+|  -> /combine_msgs                                          | 0.000753s |
+|  -> /render                                                | 0.000618s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 16 (0.086/s) [22685] [Fri Apr 21 03:44:44 2017] ***
+[debug] Path is "/admin/pending_edits_program"
+[debug] Arguments are "2815"
+[debug] Found sessionid "a4659948ddcc30d002e014e41cad1b80a32bc218" in cookie
+[debug] Restored session "a4659948ddcc30d002e014e41cad1b80a32bc218"
+[debug] "GET" request for "admin/pending_edits/program/2815" from "10.10.14.58"
+[debug] Displaying Admin Tab
+[debug] 1495760684
+[debug] Displaying Admin Tab
+[info] Status messages: Pending Edits Approved.
+[debug] Rendering template "admin/pending_edits/program.tt"
+[debug] Response Code: 200; Content-Type: text/html; charset=utf-8; Content-Length: unknown
+[info] Request took 0.688372s (1.453/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /admin/begin                                               | 0.565543s |
+|  -> /begin                                                 | 0.559722s |
+|   -> /populate_roles                                       | 0.537894s |
+|    -> /populate_role_permissions                           | 0.004494s |
+|    -> /can_see_sc_programs_table_on_home_page              | 0.000580s |
+|    -> /sitevisitor/setup_admin_tabs                        | 0.005708s |
+| /auto                                                      | 0.001936s |
+| /admin/admin                                               | 0.000094s |
+| /admin/pending_edits                                       | 0.000103s |
+| /admin/pending_edits_program                               | 0.028166s |
+|  -> /admin/load_edits_for_program                          | 0.021080s |
+|   -> /admin/get_edit_line                                  | 0.016598s |
+| /end                                                       | 0.065065s |
+|  -> /admin/setup_admin_tabs                                | 0.024370s |
+|   -> /sitevisitor/setup_admin_tabs                         | 0.005222s |
+|  -> /programs/setup_program_tabs                           | 0.000276s |
+|  -> /populate_errors                                       | 0.000253s |
+|  -> /combine_msgs                                          | 0.000350s |
+|  -> /render                                                | 0.038419s |
+|   -> PHAB::View::TT->process                               | 0.037612s |
+'------------------------------------------------------------+-----------'
+
+
+

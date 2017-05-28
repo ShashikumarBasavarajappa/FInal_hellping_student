@@ -1,6 +1,7 @@
 package com.development.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,22 +14,32 @@ import org.hibernate.search.annotations.Store;
 @Table(name="Registration")
 public class Registration {
 
+	@Id
+	@Field
+	@GeneratedValue
 	private int id;
 	@Field
 	private String first_name;
 	private String last_name;
-	@Id
-	@Field
 	private String email;
 	private String password;
+	private int is_archived;
 	private String password_confirmation;
-	
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public int getIs_archived() {
+		return is_archived;
+	}
+	public void setIs_archived(int is_archived) {
+		this.is_archived = is_archived;
+	}
+	
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -45,6 +56,7 @@ public class Registration {
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -61,6 +73,6 @@ public class Registration {
 		this.email = email;
 	}
 
-	
-	
+
+
 }

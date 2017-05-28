@@ -1,0 +1,38 @@
+hibernate 2 feature
+
+1. query launguage object feature and also
+2. cache feature way of the doing.
+
+small scale application we designed the application, and remaining thing we need the hibernate operation throught the session
+create from that we can proced easily
+
+hibernate features are
+
+1.  AUTO DDL (data defination language)
+2.  If we pass data properties to ORACLE it will create automatically
+3.  In Hibernate no need of the creating the table, some times it will create automatically
+4.  Object Relational mapping , IN case of the JDBC is the table relational related function
+5.  Date base independent query language support done in the hibernate
+6.  cache support also there in the hibernate
+7.  Primary key genaration support feature provided here.
+8.  <generator> id </generator>
+9.  AS per nomalization process as the primary key required.for they can give 7
+10. IF same value is inerting means then it will through constraint error
+11. If we have CRUD operation then id must required.
+12. validation support these feature they give here.
+13. hibernate validation are most required validation.
+14. we have also exception handling the query suppport is there.
+15. Two  feature it had OneToOne and HASArelationship
+16  mapping is also there parent child relationship means that primary key and ForeignKey relationaship mapping.
+egg :
+
+one admin department and facaulty department is there
+
+we can maintain is_as_a relationship and as_A relationship
+
+non SQL OGM(object graph mapping) and ORM(object relational mapping).
+
+
+we have wrote some fastest way of the serching of the records.
+
+In this hibernate we have fastest search implemenetion search also there.

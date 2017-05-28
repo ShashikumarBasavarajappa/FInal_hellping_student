@@ -1,0 +1,288 @@
+error log
+
+Competecy Analysis
+
+
+
+
+Use of uninitialized value in numeric eq (==) at /home/sbasavarajappa/ea_portal/LEAF/lib/LEAF/Controller/Programs.pm line 141.
+[info] *** Request 1 (0.012/s) [10071] [Fri May  5 07:52:49 2017] ***
+[debug] Path is "/programs/curriculum/competency/competency_list"
+[debug] Found sessionid "e342b7f60873f4d69402107bf395a0b2028d4d5d" in cookie
+[debug] Restored session "e342b7f60873f4d69402107bf395a0b2028d4d5d"
+[debug] "GET" request for "programs/489/curriculum/competencies/list" from "10.10.14.184"
+[debug] 1502625169
+[debug] Rendering template "programs/curriculum/competency_analysis.tt"
+[debug] Response Code: 200; Content-Type: text/html; charset=utf-8; Content-Length: unknown
+[info] Request took 5.947301s (0.168/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /programs/begin                                            | 0.120724s |
+|  -> /begin                                                 | 0.107739s |
+|   -> /populate_roles                                       | 0.081451s |
+|    -> /populate_role_permissions                           | 0.008310s |
+|    -> /can_see_sc_programs_table_on_home_page              | 0.001072s |
+| /auto                                                      | 0.003050s |
+| /programs/program                                          | 0.151513s |
+|  -> /programs/admintab                                     | 0.000657s |
+|  -> /programs/is_ar_phase                                  | 0.023962s |
+| /programs/curriculum/curriculum                            | 0.002954s |
+|  -> /programs/curriculum/setup_curriculum_subtabs          | 0.000863s |
+|  -> /programs/admintab                                     | 0.000453s |
+| /programs/curriculum/competency/competencies               | 0.000259s |
+| /programs/curriculum/competency/competency_list            | 0.208229s |
+|  -> /programs/admintab                                     | 0.000408s |
+| /end                                                       | 2.611552s |
+|  -> /admin/setup_admin_tabs                                | 0.000797s |
+|  -> /programs/setup_program_tabs                           | 0.327449s |
+|   -> /programs/show_assessment_tab                         | 0.001511s |
+|  -> /populate_errors                                       | 0.000752s |
+|  -> /combine_msgs                                          | 0.000688s |
+|  -> /render                                                | 2.278891s |
+|   -> CAATE::View::TT->process                              | 2.276710s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 2 (0.023/s) [10071] [Fri May  5 07:52:55 2017] ***
+[debug] Arguments are "js/maxlength.js"
+[debug] Found sessionid "e342b7f60873f4d69402107bf395a0b2028d4d5d" in cookie
+[debug] Restored session "e342b7f60873f4d69402107bf395a0b2028d4d5d"
+[debug] "GET" request for "js/maxlength.js" from "10.10.14.184"
+[debug] Static::Simple: 404: file not found: js/maxlength.js
+[debug] Response Code: 404; Content-Type: text/html; Content-Length: unknown
+[info] Request took 0.032529s (30.742/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 3 (0.033/s) [10071] [Fri May  5 07:52:57 2017] ***
+[debug] Arguments are "programs/489/curriculum/competencies/undefined"
+[debug] Found sessionid "e342b7f60873f4d69402107bf395a0b2028d4d5d" in cookie
+[debug] Restored session "e342b7f60873f4d69402107bf395a0b2028d4d5d"
+[debug] "GET" request for "programs/489/curriculum/competencies/undefined" from "10.10.14.184"
+[debug] 1502625177
+[debug] Rendering template "shared/error_page.tt"
+[debug] Response Code: 404; Content-Type: text/html; charset=utf-8; Content-Length: unknown
+[info] Request took 0.178071s (5.616/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /begin                                                     | 0.096306s |
+|  -> /populate_roles                                        | 0.063591s |
+|   -> /populate_role_permissions                            | 0.010810s |
+|   -> /can_see_sc_programs_table_on_home_page               | 0.001261s |
+| /auto                                                      | 0.002371s |
+| /default                                                   | 0.000234s |
+| /end                                                       | 0.040336s |
+|  -> /combine_msgs                                          | 0.000732s |
+|  -> /render                                                | 0.038312s |
+|   -> CAATE::View::TT->process                              | 0.036470s |
+'------------------------------------------------------------+-----------'
+
+
+
+
+
+
+
+
+
+
+
+
+
+to fetch the data
+
+
+sub competency_list : Chained('competencies') : PathPart('list') : Args(0) {
+    my ( $self, $c ) = @_;
+
+    my $program_id = $c->stash->{program}->id;
+
+
+    if( $c->stash->{roles}{management} ) {
+        $c->forward('/programs/admintab');
+    }
+
+    $c->stash->{selected_progtab} = 'curriculum';
+    $c->stash->{selected_subtab} = 'competencies/list';
+
+    # Get the Curriculum Object
+    my $curriculum = $c->model('Curriculum');
+
+    # Get the domains
+    $c->stash->{domains} = $curriculum->domains_as_rowobjs;
+
+    unless ($c->stash->{no_competencies})
+    {
+        # Fetch the Competencies
+        $c->stash->{competencies} = $curriculum->competencies_as_rowobjs;
+    }
+
+    # Fetch the list of competency ids mapped to methods
+    $c->stash->{'mapped_competency'} = $curriculum->fetch_mmapped_competency_ids( $program_id );
+
+    # Set PageTitle/Template
+    $c->stash(
+        pagetitle          => 'Competency List',
+        template           => 'programs/curriculum/competency_analysis.tt'
+    );
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+reports tab 
+
+[info] *** Request 60 (0.089/s) [10071] [Fri May  5 08:02:43 2017] ***
+[debug] Path is "/programs/curriculum/competency/competency_methods_report"
+[debug] Found sessionid "e342b7f60873f4d69402107bf395a0b2028d4d5d" in cookie
+[debug] Restored session "e342b7f60873f4d69402107bf395a0b2028d4d5d"
+[debug] "GET" request for "programs/489/curriculum/competencies/methods_report" from "10.10.14.184"
+[debug] 1502625763
+[debug] Rendering template "programs/curriculum/competency_methods_report.tt"
+[debug] Response Code: 200; Content-Type: text/html; charset=utf-8; Content-Length: unknown
+[info] Request took 44.798532s (0.022/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /programs/begin                                            | 0.110293s |
+|  -> /begin                                                 | 0.097287s |
+|   -> /populate_roles                                       | 0.059114s |
+|    -> /populate_role_permissions                           | 0.009636s |
+|    -> /can_see_sc_programs_table_on_home_page              | 0.000484s |
+| /auto                                                      | 0.001806s |
+| /programs/program                                          | 0.160050s |
+|  -> /programs/admintab                                     | 0.000994s |
+|  -> /programs/is_ar_phase                                  | 0.021644s |
+| /programs/curriculum/curriculum                            | 0.002784s |
+|  -> /programs/curriculum/setup_curriculum_subtabs          | 0.000979s |
+|  -> /programs/admintab                                     | 0.000518s |
+| /programs/curriculum/competency/competencies               | 0.000184s |
+| /programs/curriculum/competency/competency_methods_report  | 40.51547s |
+|  -> /programs/admintab                                     | 0.000342s |
+| /end                                                       | 0.564992s |
+|  -> /admin/setup_admin_tabs                                | 0.002390s |
+|  -> /programs/setup_program_tabs                           | 0.367051s |
+|   -> /programs/show_assessment_tab                         | 0.001295s |
+|  -> /populate_errors                                       | 0.000745s |
+|  -> /combine_msgs                                          | 0.000398s |
+|  -> /render                                                | 0.189455s |
+|   -> CAATE::View::TT->process                              | 0.187945s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 61 (0.085/s) [10071] [Fri May  5 08:03:28 2017] ***
+[debug] Arguments are "js/maxlength.js"
+[debug] Found sessionid "e342b7f60873f4d69402107bf395a0b2028d4d5d" in cookie
+[debug] Restored session "e342b7f60873f4d69402107bf395a0b2028d4d5d"
+[debug] "GET" request for "js/maxlength.js" from "10.10.14.184"
+[debug] Static::Simple: 404: file not found: js/maxlength.js
+[debug] Response Code: 404; Content-Type: text/html; Content-Length: unknown
+[info] Request took 0.074339s (13.452/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 62 (0.086/s) [10071] [Fri May  5 08:03:29 2017] ***
+[debug] Arguments are "programs/489/curriculum/competencies/undefined"
+[debug] Found sessionid "e342b7f60873f4d69402107bf395a0b2028d4d5d" in cookie
+[debug] Restored session "e342b7f60873f4d69402107bf395a0b2028d4d5d"
+[debug] "GET" request for "programs/489/curriculum/competencies/undefined" from "10.10.14.184"
+[debug] 1502625809
+[debug] Rendering template "shared/error_page.tt"
+[debug] Response Code: 404; Content-Type: text/html; charset=utf-8; Content-Length: unknown
+[info] Request took 0.252065s (3.967/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /begin                                                     | 0.182840s |
+|  -> /populate_roles                                        | 0.101113s |
+|   -> /populate_role_permissions                            | 0.009569s |
+|   -> /can_see_sc_programs_table_on_home_page               | 0.001605s |
+| /auto                                                      | 0.001432s |
+| /default                                                   | 0.000403s |
+| /end                                                       | 0.016478s |
+|  -> /combine_msgs                                          | 0.000436s |
+|  -> /render                                                | 0.015130s |
+|   -> CAATE::View::TT->process                              | 0.014257s |
+'------------------------------------------------------------+-----------'
+
+
+
+
+
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /programs/begin                                            | 0.116434s |
+|  -> /begin                                                 | 0.100107s |
+|   -> /populate_roles                                       | 0.066626s |
+|    -> /populate_role_permissions                           | 0.011564s |
+|    -> /can_see_sc_programs_table_on_home_page              | 0.000756s |
+| /auto                                                      | 0.002420s |
+| /programs/program                                          | 0.431399s |
+|  -> /programs/admintab                                     | 0.001043s |
+|  -> /programs/is_ar_phase                                  | 0.035463s |
+| /programs/curriculum/curriculum                            | 0.002715s |
+|  -> /programs/curriculum/setup_curriculum_subtabs          | 0.000929s |
+|  -> /programs/admintab                                     | 0.000518s |
+| /programs/curriculum/competency/competencies               | 0.000341s |
+| /programs/curriculum/competency/course_competencies_report | 0.608743s |
+|  -> /programs/admintab                                     | 0.000501s |
+| /end                                                       | 0.647365s |
+|  -> /admin/setup_admin_tabs                                | 0.002159s |
+|  -> /programs/setup_program_tabs                           | 0.533907s |
+|   -> /programs/show_assessment_tab                         | 0.000732s |
+|  -> /populate_errors                                       | 0.001217s |
+|  -> /combine_msgs                                          | 0.000817s |
+|  -> /render                                                | 0.105277s |
+|   -> CAATE::View::TT->process                              | 0.102508s |
+'------------------------------------------------------------+---------
+
+
+
+    my ( $self, $c ) = @_;
+
+    my $program_id = $c->stash->{program}->id;
+    my $shashi_test  = $schema->resultset('Program')->find({ parent_program_id => $program_id });
+
+    $program_id = $shashi_test->id;
+
+    if( $c->stash->{roles}{management} ) {
+        $c->forward('/programs/admintab');
+    }
+
+    $c->stash->{selected_progtab} = 'curriculum'
+    
+    
+       my $program_id = $c->stash->{program}->id;
+    my $shashi_test = $c->model("LEAF::Program")->search({ parent_program_id => $program_id });
+    $program_id = $shashi_test->id;
+
+    if( $c->stash->{roles}
+    
+
+
+
+
+
+
+
+
