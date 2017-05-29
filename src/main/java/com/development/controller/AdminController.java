@@ -104,6 +104,18 @@ public class AdminController {
 
 	}
 
+	@RequestMapping(value="/rejected_applicants/enable_archiver", method=RequestMethod.GET)
+	public ModelAndView enable_archiver (@ModelAttribute("archive_user") Archived_user archive_user){
+
+		System.out.println("============asddddddddsdsadsads====");
+		System.out.println("=======****555555555555555555555****" + archive_user.getUser_id());
+		int user_id  =  archive_user.getUser_id();
+		Archived_user au = adminDao.enable_archiver(archive_user);
+		return null;
+
+	}
+
+
 
 
 	@RequestMapping(value="/adminprofile/profile_save", method = RequestMethod.GET)
@@ -164,6 +176,21 @@ public class AdminController {
 	                return model;
 	     }
 //notification code completed here please stop here only
+
+// code to fetch the rejected applicants
+
+	     	@RequestMapping(value="/rejected_applicants/{id}",method = RequestMethod.GET)
+		public ModelAndView rejected_applicants(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
+				System.out.println("------------shashi ------" + id);
+				ModelAndView model = new ModelAndView("rejected_applicants");
+				List<SearchEngine> adminRejected_users =  adminDao.adminRejected_users();
+				for(SearchEngine ss : adminRejected_users){
+					System.out.println("========sdfds====" + ss.getFirst_name());
+				}
+				model.addObject("adminRejected_users",adminRejected_users);
+				return model;
+		}
+
 
 //pdf coding don't change anything here please it's working fine
 		 @RequestMapping(value="/downloadPDF/{email}",method = RequestMethod.GET)

@@ -46,6 +46,7 @@
       <li><a href="#">Home</a></li>
       <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
       <li><a href="#" class="active">Search</a></li>
+      <li><a href="rejected_applicants/${admindetails.id}"><span class="glyphicon glyphicon-user"></span> Rejected Users</a></li>
 
     </ul>
      <ul class="nav navbar-nav navbar-right">
@@ -54,7 +55,6 @@
       <li><a href="notification/${admindetails.id}"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
 
-    <button class="btn btn-danger navbar-btn">Rejected Appliants</button>
   </div>
 </nav>
 
@@ -124,7 +124,14 @@
             </div>
             &nbsp;
 &nbsp;
-
+<c:choose>
+<c:when test="${empty searchresult}">
+  <div class="alert alert-warning">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <strong>Warning!</strong> Search you will get result other wise you can't able to see the result.
+  </div>
+</c:when>
+<c:otherwise>
     <table class="table table-bordered table-inverse">
                    <thead class="thead-inverse">
                     <tr>
@@ -152,7 +159,7 @@
                    </c:forEach>
                  -->
                  <c:forEach items="${searchresult}" var="emp">
-              
+
                  <tr>
                     <td>${emp.first_name}</td>
                     <td>${emp.last_name}</td>
@@ -160,13 +167,15 @@
                     <td><form  id="profilepage" action="archive_user" method="get"> <input type="checkbox" name="newsletter" id="newsletter" value="${emp.id}"></form></td>
            <td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
                  </tr>
-     
+
                 </c:forEach>
                   </tbody>
 
 	</table>
   <br />
     <button class="btn btn-danger navbar-btn" id="archive_user">Remove the User</button>
+  </c:otherwise>
+</c:choose>
 </div>
 
 </body>

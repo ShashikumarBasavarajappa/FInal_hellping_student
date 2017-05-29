@@ -40,6 +40,24 @@ public class AdminImpl  implements AdminDAO{
         this.sessionFactory = sessionFactory;
     }
 
+		@Transactional
+		public List<SearchEngine> adminRejected_users(){
+			Session session = sessionFactory.getCurrentSession();
+			Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.eq("is_archived", 1));
+
+			List<SearchEngine> crr = cr.list();
+
+			/*
+			for(int i=0;i<crr.size();i++){
+				//SearchEngine ss = new SearchEngine();
+				System.out.println("===========================" + crr.get(0));
+			}
+			for(SearchEngine ss : crr){
+				System.out.println("====---====" + ss.getEmail());
+			}
+			*/
+			return crr;
+		}
     @Transactional
 	public List<SearchEngine> searchAdmin(SearchEngine searchtext) {
 		// TODO Auto-generated method stub
@@ -233,6 +251,33 @@ public Notification getnotificationresult(int id) {
 		return null;
 
 	}
+
+	@Override
+	@Transactional
+	public Archived_user enable_archiver(Archived_user archive_user) {
+		// TODO Auto-generated method stub
+
+		Session session = this.sessionFactory.getCurrentSession();
+
+		System.out.println("=======ammaa================" + archive_user.getUser_id());;
+		System.out.println("-----------------------sssssssssssssss-----------------eeeeeeeee ");
+
+		int user_id  = archive_user.getUser_id();
+		Criteria cr = session.createCriteria(Archived_user.class).add(Restrictions.eqOrIsNull("user_id", archive_user.getUser_id()));
+		//SearchEngine profileresult = (SearchEngine) cr.uniqueResult();
+		Archived_user aaa = (Archived_user) cr.uniqueResult();
+		System.out.println("==============adssdddddddddddddddddsdsa======" + aaa.getEmail());
+		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, user_id);
+		//Archived_user aa = (Archived_user) session.get(Archived_user.class, user_id);
+
+		session.delete(aaa);
+		//session.delete(aa);
+		ss.setIs_archived(0);
+		session.update(ss);
+		return null;
+
+	}
+
 
 	public SearchEngine archiveupdate (int id){
 		Session session = sessionFactory.getCurrentSession();

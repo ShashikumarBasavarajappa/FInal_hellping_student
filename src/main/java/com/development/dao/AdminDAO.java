@@ -17,7 +17,8 @@ public interface AdminDAO {
 		public  Notification getnotificationresult(int id);
 
 		public Archived_user archive_user(Archived_user archive_user);
-
+		public List<SearchEngine> adminRejected_users();
+		public Archived_user enable_archiver(Archived_user archive_user);
 
 
     //System.out.println("=======sdfadsfds===" + email);
