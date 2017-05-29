@@ -97,7 +97,28 @@
           -->
           <div class="row">
 
-          <div class="col-md-4 col-md-offset-7">
+		  <div class="col-sm-5" id="corbonads" style="border-radius: 5%;">
+		  	<b><i><h2 class="text-info"> Why we developed this</h2></i></b>
+		  <div class="panel panel-default">
+		  		<p class="text-success"><i>We are helping job seeker through the company employees.</i>
+		  		<br />
+		  		<ul>
+		  			<li>We are findind the colleges for the job. </li>
+		  			<li>People searching for Good college they can go through the portal.</li>
+		  			<li>you can communicate for admin for job and lectures for the college sections.</li>
+		  		
+		  		</ul>
+		  		<p class="text-info"> Please give the suggetion for anything new changes and contact us for any thing from our side.</p> 
+		  			<br />
+		  			<i class="text-primary">SHASHIKUMAR , 7259127489</i>
+		  		
+		  		</p>
+		  		
+		  	</div>
+		  </div>
+		   <div class="col-sm-2">
+		   </div>
+          <div class="col-sm-5">
               <div class="panel panel-default">
                   <div class="panel-heading">
                       <span class="glyphicon glyphicon-lock"></span> Login</div>
@@ -145,12 +166,10 @@
 
             <!-- designed for exa,ple -->
 
-
-
         <!-- Title -->
         <div class="row">
-            <div class="col-lg-12">
-                <h3>TOP JOBS AND COLLEGES</h3>
+            <div class="col-lg-12" style="margin-top: 10%;">
+                <h3 class="text-danger"><strong>TOP JOBS AND COLLEGES</strong></h3>
             </div>
         </div>
         <!-- /.row -->
