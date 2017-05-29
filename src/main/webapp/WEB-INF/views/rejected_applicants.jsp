@@ -15,7 +15,7 @@
 
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
       <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
-      <script src="<%=request.getContextPath() %>/resources/jquery/js/Adminhome_shashi.js"></script>
+      <script src="<%=request.getContextPath() %>/resources/jquery/js/archived_shashi.js"></script>
 
 
         <style type="text/css">
@@ -62,6 +62,14 @@
 
   <h2>Rejected applicants  By SHASHIKUMAR</h2>
 
+  <c:choose>
+  <c:when test="${empty adminRejected_users}">
+    <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning!</strong> None of the User are Archived by you.
+    </div>
+  </c:when>
+  <c:otherwise>
   <table class="table table-bordered table-inverse">
   <thead>
     <tr>
@@ -79,12 +87,14 @@
       <td class="table-danger">${emp.first_name}</td>
       <td class="table-success">${emp.last_name}</td>
       <td class="table-warning">${emp.email}</td>
-      <td><form  id="profilepage" action="archive_user" method="get"> <input type="checkbox" name="newsletter" id="newsletter" value="${emp.id}"></form></td>
+      <td><form  id="profilepage" action="enable_archiver" method="get"> <input type="checkbox" name="newsletter" id="newsletter" value="${emp.id}"></form></td>
     </tr>
      </c:forEach>
 
   </tbody>
 </table>
+</c:otherwise>
+</c:choose>
 </div>
   </body>
   </html>
