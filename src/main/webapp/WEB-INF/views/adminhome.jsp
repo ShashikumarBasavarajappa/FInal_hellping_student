@@ -46,6 +46,7 @@
       <li><a href="#">Home</a></li>
       <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
       <li><a href="#" class="active">Search</a></li>
+      <li><a href="rejected_applicants/${admindetails.id}"><span class="glyphicon glyphicon-user"></span> Rejected Users</a></li>
 
     </ul>
      <ul class="nav navbar-nav navbar-right">
@@ -54,7 +55,6 @@
       <li><a href="notification/${admindetails.id}"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
     </ul>
 
-    <button class="btn btn-danger navbar-btn">Rejected Appliants</button>
   </div>
 </nav>
 

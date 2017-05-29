@@ -17,6 +17,7 @@ public interface AdminDAO {
 		public  Notification getnotificationresult(int id);
 
 		public Archived_user archive_user(Archived_user archive_user);
+		public List<SearchEngine> adminRejected_users();
 
 
 

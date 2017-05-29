@@ -40,6 +40,24 @@ public class AdminImpl  implements AdminDAO{
         this.sessionFactory = sessionFactory;
     }
 
+		@Transactional
+		public List<SearchEngine> adminRejected_users(){
+			Session session = sessionFactory.getCurrentSession();
+			Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.eq("is_archived", 1));
+			
+			List<SearchEngine> crr = cr.list();
+
+			/*
+			for(int i=0;i<crr.size();i++){
+				//SearchEngine ss = new SearchEngine();
+				System.out.println("===========================" + crr.get(0));
+			}
+			for(SearchEngine ss : crr){
+				System.out.println("====---====" + ss.getEmail());
+			}
+			*/
+			return crr;
+		}
     @Transactional
 	public List<SearchEngine> searchAdmin(SearchEngine searchtext) {
 		// TODO Auto-generated method stub

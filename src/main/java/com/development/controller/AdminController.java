@@ -165,6 +165,21 @@ public class AdminController {
 	     }
 //notification code completed here please stop here only
 
+// code to fetch the rejected applicants
+
+	     	@RequestMapping(value="/rejected_applicants/{id}",method = RequestMethod.GET)
+		public ModelAndView rejected_applicants(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
+				System.out.println("------------shashi ------" + id);
+				ModelAndView model = new ModelAndView("rejected_applicants");
+				List<SearchEngine> adminRejected_users =  adminDao.adminRejected_users();
+				for(SearchEngine ss : adminRejected_users){
+					System.out.println("========sdfds====" + ss.getFirst_name());
+				}
+				model.addObject("adminRejected_users",adminRejected_users);
+				return model;
+		}
+
+
 //pdf coding don't change anything here please it's working fine
 		 @RequestMapping(value="/downloadPDF/{email}",method = RequestMethod.GET)
 	        public ModelAndView downloadPDF(HttpServletRequest request, HttpServletResponse response,@PathVariable String email){
