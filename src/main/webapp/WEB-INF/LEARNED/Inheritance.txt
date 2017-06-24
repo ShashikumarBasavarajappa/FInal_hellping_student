@@ -1,0 +1,20 @@
+#inheritance is the concept aquaring the all the properties from parent class.
+
+uses,
+
+a. code reuseaility
+b. Method Overiding
+
+
+class Subclass-name extends Superclass-name  
+{  
+   //methods and fields  
+}  
+
+
+extending class deries from the parent class.
+
+Terminology should we are extending the parent class.
+
+
+

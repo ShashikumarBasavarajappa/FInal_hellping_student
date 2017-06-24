@@ -36,7 +36,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                 </button>
-                    <a class="navbar-brand" href="#">Start Review Web Page</a>
+                    <a class="navbar-brand" href="#">Study 360</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
@@ -106,14 +106,14 @@
 		  			<li>We are findind the colleges for the job. </li>
 		  			<li>People searching for Good college they can go through the portal.</li>
 		  			<li>you can communicate for admin for job and lectures for the college sections.</li>
-		  		
+
 		  		</ul>
-		  		<p class="text-info"> Please give the suggetion for anything new changes and contact us for any thing from our side.</p> 
+		  		<p class="text-info"> Please give the suggetion for anything new changes and contact us for any thing from our side.</p>
 		  			<br />
 		  			<i class="text-primary">SHASHIKUMAR , 7259127489</i>
-		  		
+
 		  		</p>
-		  		
+
 		  	</div>
 		  </div>
 		   <div class="col-sm-2">
@@ -241,8 +241,7 @@
                 </div>
             </div>
         </footer>
-        <a href="empform">Register</a>
-        <a href="viewemp">View Employees</a>
+
         </div>
     </body>
 </html>
