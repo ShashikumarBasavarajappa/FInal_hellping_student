@@ -25,21 +25,30 @@ public class RegistrationController {
 		ModelAndView model = new ModelAndView("register");
 		model.addObject("printme","SHASHIKUMAR !!");
 		return model;
-		
-	}
-	
-	@RequestMapping(value="/registersave", method = RequestMethod.POST)
-	public ModelAndView registersave(@ModelAttribute("registration") Registration registration) throws IOException{
 
+	}
+	@RequestMapping(value="/sample")
+	public ModelAndView sample(HttpServletResponse response) throws IOException{
+		ModelAndView model = new ModelAndView("sample");
 		
+		return model;
+
+	}
+
+	
+	@RequestMapping(value="/registerhome", method = RequestMethod.POST)
+	public String registerhome(@ModelAttribute("registration") Registration registration) throws IOException{
+
+
 		//System.out.println("................................" + Email + "=====" + FirstName + "=====" + LastName + "=====" + password + "==========" + Con_pas);
 		regDao.save(registration);
-		ModelAndView model = new ModelAndView("register");
-		model.addObject("printme","SHASHIKUMAR !!");
-		return model;
-		
-	}
-	
+		//ModelAndView model = new ModelAndView("rejected_applicants");
+		//model.addObject("printme","SHASHIKUMAR !!");
+		//return model;
+		return "redirect:/welcomepage";
+
+	}	
+
 	@RequestMapping(value="/signin", method = RequestMethod.POST)
 	public ModelAndView signin(@ModelAttribute("registration") Registration registration) throws IOException{
 
@@ -61,6 +70,6 @@ public class RegistrationController {
 			model.addObject("error_msg","Please enter correct email and password");
 			return model;
 		}
-		
+
 	}
 }

@@ -26,7 +26,7 @@
 
 <script type="text/javscript">
 $(document).ready(function(){
-alert("pppppppppppppppppppppppp");  
+alert("pppppppppppppppppppppppp");
 });
 
 </script>
@@ -40,7 +40,7 @@ alert("pppppppppppppppppppppppp");
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">Study 360</a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#">Home</a></li>
