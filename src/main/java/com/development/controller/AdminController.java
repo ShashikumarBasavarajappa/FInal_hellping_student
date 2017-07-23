@@ -58,7 +58,7 @@ public class AdminController {
         return model;
     }
 
-
+	/// checking
 	@RequestMapping(value="/Adminsearch", method = RequestMethod.GET)
 	public ModelAndView registersave(@ModelAttribute("search") SearchEngine search) throws IOException{
 
@@ -132,7 +132,7 @@ public class AdminController {
 	//	regDao.save(registration);
 	//	ModelAndView model = new ModelAndView("register");
 	//	model.addObject("printme","SHASHIKUMAR !!");
-	//	return model;
+	//	return model;;
 		return model;
 	}
 		@RequestMapping(value="/adminprofile/{email}")
@@ -155,9 +155,7 @@ public class AdminController {
 	            httpSession.invalidate();
 	            return "redirect:/";
 	        }
-
-
-
+		
 		 @RequestMapping(value="/about_us",method = RequestMethod.GET)
 	        public ModelAndView about_us(HttpServletRequest request){
 	            ModelAndView model = new ModelAndView("about_us");

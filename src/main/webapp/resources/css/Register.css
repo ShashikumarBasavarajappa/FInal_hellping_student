@@ -4,9 +4,28 @@ body {
     margin:40px;
     font-family: 'Roboto Condensed', sans-serif;
     background-color: #16A085;
-    
+
 }
 
+
+form.form{
+    margin:10px 0px 0px 10px;
+    background:#EEEEEE;
+    padding:20px;
+    max-width: 400px !important;
+    min-width: 400px !important;
+    width: 400px !important;
+    border: 1px solid #CCCCCC;
+    float:left;
+}
+input.error{border:1px solid #FF0000 !important; }
+label.error,div.error{
+    font-weight:normal;
+    color:#FF0000 !important;
+}
+.text-normal{
+    font-weight:normal !important;
+}
 
 
 .head {
@@ -20,7 +39,7 @@ body {
 }
 
 .stepwizard-step p {
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 
 .stepwizard-row {
@@ -28,7 +47,7 @@ body {
 }
 
 .stepwizard {
-    display: table;     
+    display: table;
     width: 100%;
     position: relative;
 }
@@ -48,10 +67,10 @@ body {
     height: 3px;
     background-color: #BDC3C7;
     z-order: 0;
-    
+
 }
 
-.stepwizard-step {    
+.stepwizard-step {
     display: table-cell;
     text-align: center;
     position: relative;
@@ -59,14 +78,14 @@ body {
 
 .stepwizard-step p {
     margin-top:10px;
-    
+
 }
 
 
 
 .btn-success .glyphicon {
     color: #fff;
-    
+
     font-size: 40px;
 }
 
@@ -78,11 +97,11 @@ body {
   font-size: 40px;
   line-height: 1.428571429;
   border-radius: 50px;
-  
-  
+
+
 }
 
-/* 
+/*
 // Listrap v1.0, by Gustavo Gondim (http://github.com/ggondim)
 // Licenced under MIT License
 // For updates, improvements and issues, see https://github.com/inosoftbr/listrap
@@ -160,7 +179,7 @@ body {
 .btn-group .btn:last-child {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    
+
 }
 .btn-group .form-horizontal .btn[type="submit"] {
   border-top-left-radius: 4px;
@@ -180,7 +199,7 @@ body {
 @media screen and (min-width: 768px) {
     #adv-search {
         width: 500px;
-        
+
     }
     .dropdown.dropdown-lg {
         position: static !important;

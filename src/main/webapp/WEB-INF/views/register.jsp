@@ -9,44 +9,45 @@
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/>
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/Register.css" rel="stylesheet"/>
-      <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
-    
+    <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
+
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <!-- 
+    <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery.validate.min.js"></script>
+    <script src="<%=request.getContextPath() %>/resources/jquery/js/register_validate.js"></script>
+    <!--
      <script src="<%=request.getContextPath() %>/resources/jquery/js/Register.js"></script>
      -->
-     
-             
+
+
         <style type="text/css">
-			        
+
 			body {
 			    background-image: url("<%=request.getContextPath() %>/resources/images/back.png");
 			}
 			.no-background {
 			    background-image: url("images/blank.jpg");
 			}
-			 
+
         </style>
-    
+
 </head>
 <body>
 
 <div class="head">
     <h1>SHASHIKUMAR ADMIN LOGIN</h1>
 </div>
-
 <div class="container">
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    	<form role="form" action="registersave" method="post">
+    	<form role="form" action="registerhome" method="post" id="register_form_validate">
 			<h2>Welcome to Step by Step <small>Sign up</small></h2>
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+            <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
@@ -78,13 +79,13 @@
 					</span>
 				</div>
 				<div class="col-xs-8 col-sm-9 col-md-9">
-					 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> 
+					 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="sample" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a>
 				</div>
 			</div>
-			
+
 			<hr class="colorgraph">
 			<div class="row">
-				<div class="col-xs-12 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+				<div class="col-xs-12 col-md-6"><input type="submit" id="register_account" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
 				<div class="col-xs-12 col-md-6"><a href="/development" class="btn btn-success btn-block btn-lg">Sign In</a></div>
 			</div>
 		</form>
@@ -95,11 +96,11 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
 				<h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
 			</div>
 			<div class="modal-body">
-                            <p> Welcome to Step by Step	
+                            <p> Welcome to Step by Step
                         </div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
