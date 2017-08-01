@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap/js/bootstrap.min.js" rel="stylesheet"/>
- <!--
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/shaashi.css" rel="stylesheet"/>
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
- -->
+ <link type="text/css" href="<%=request.getContextPath() %>/resources/css/profile.css" rel="stylesheet"/>
  <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
  <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+ <script src="<%=request.getContextPath() %>/resources/jquery/js/profile.js"></script>
      <style type="text/css">
 
          body {
@@ -23,39 +23,10 @@
          }
 
      </style>
-
-<script type="text/javscript">
-$(document).ready(function(){
-alert("pppppppppppppppppppppppp");
-});
-
-</script>
 </head>
 <body>
 <div class="container">
-<div class="head">
-    <h1>Profile_Page</h1>
-</div>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Study 360</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
-      <li><a href="search_redirt/${profileresult.id}" class="active">Search</a></li>
-    </ul>
-     <ul class="nav navbar-nav navbar-right">
-      <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
-    </ul>
-
-    <button class="btn btn-danger navbar-btn">Rejected Appliants</button>
-  </div>
-</nav>
-
+<%@include  file="default_nav_bar.jsp" %>
 	<form  id="profilepage" action="profile_save" method="get">
 
 <div class="col-md-3"></div>

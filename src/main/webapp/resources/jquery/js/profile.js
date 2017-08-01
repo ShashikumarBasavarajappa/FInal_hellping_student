@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  alert("---------------------");
+  
 	//$('#profilepage').each( function() { $(this).attr('readonly', true); });
 	//$("#email :input").attr("disabled", true);
 	$("#email").attr('disabled','disabled');
@@ -11,7 +11,7 @@ $(document).ready(function () {
 	//$('#save_button').attr('disabled','disabled');
 	$('#save_button').prop('disabled',true);
     $('#edit_button').click(function(){
-    	//alert("---------------------");
+  
     	$("#email").removeAttr('disabled');
     	$("#first_name").removeAttr('disabled');
     	$("#last_name").removeAttr('disabled');
@@ -37,10 +37,7 @@ $(document).ready(function () {
 
     	var data = 'first_name=' + first_name + '&last_name=' + last_name + '&email=' + email + '&password=' + password;
     	var url = $("#profilepage").attr("action");
-    	//alert("-----------------" + url);
-    	//alert("=======================" + data);
-    	//var frm = $('#submitForm');
-    	$('#save_button').fancybox();
+    	  $('#save_button').fancybox();
     	$.ajax({
 			url : 'action',
 			data : data,

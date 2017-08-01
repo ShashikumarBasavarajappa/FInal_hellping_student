@@ -48,21 +48,23 @@ public class AdminController {
 	@Autowired
 	AdminDAO adminDao;
 	RegisterDAO regDao;
+	
 	@RequestMapping(value="/adminprofile/search_redirt/{id}")
-    public ModelAndView search_redirt(@PathVariable int id) {
+    public ModelAndView search_redirt(@PathVariable int id,HttpSession session, RedirectAttributes shashi_session) {
 
 		SearchEngine profileresult = adminDao.getAdminDetails(id);
-
+		String main_user_name = (String)session.getAttribute("registrationDTO");
         System.out.println("----------------------------------" + profileresult.getFirst_name());
         ModelAndView model = new ModelAndView("adminhome");
         model.addObject("admindetails", profileresult);
+        model.addObject("main_user_name", main_user_name);
 
         return model;
     }
 
 	/// checking
 	@RequestMapping(value="/Adminsearch", method = RequestMethod.GET)
-	public ModelAndView registersave(@ModelAttribute("search") SearchEngine search) throws IOException{
+	public ModelAndView registersave(HttpSession session,@ModelAttribute("search") SearchEngine search) throws IOException{
 
 		System.out.println("--------------------------------------------jj---" + search.getFirst_name());
 		//String searchtext = search.getEmail();
@@ -73,7 +75,8 @@ public class AdminController {
 
 
 
-
+		String main_user_name = (String)session.getAttribute("registrationDTO");
+		
 		//System.out.println(searchresult.ne);
 		//List ss = (List) searchresult.iterator();
 		//while(ss.it)
@@ -92,6 +95,7 @@ public class AdminController {
 		//System.out.println(cardsList.);
 		ModelAndView model = new ModelAndView("adminhome");
 		model.addObject("searchresult",searchresult);
+		model.addObject("main_user_name", main_user_name);
 		return model;
 
 	}
@@ -107,7 +111,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value="/rejected_applicants/enable_archiver", method=RequestMethod.GET)
-	public ModelAndView enable_archiver (@ModelAttribute("archive_user") Archived_user archive_user){
+	public ModelAndView enable_archiver (@ModelAttribute("archive_user") Archived_user archive_user,HttpSession session){
 
 		System.out.println("============asddddddddsdsadsads====");
 		System.out.println("=======****555555555555555555555****" + archive_user.getUser_id());
@@ -121,15 +125,17 @@ public class AdminController {
 
 
 	@RequestMapping(value="/adminprofile/profile_save", method = RequestMethod.GET)
-	public ModelAndView profile_save(@ModelAttribute("profile_save") SearchEngine profile_save) {
+	public ModelAndView profile_save(@ModelAttribute("profile_save") SearchEngine profile_save,HttpSession session) {
 
 		//System.out.println("****************************" + first_name + "************" + last_name);
 
 		System.out.println("=======*********" + profile_save.getFirst_name());
 		SearchEngine profilesave = adminDao.profilesave(profile_save);
 		System.out.println("----------------------------amma ---" + profile_save.getFirst_name());
+		String main_user_name = (String)session.getAttribute("registrationDTO");
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("profileresult",profilesave);
+		model.addObject("main_user_name", main_user_name);
 		//System.out.println("................................" + Email + "=====" + FirstName + "=====" + LastName + "=====" + password + "==========" + Con_pas);
 	//	regDao.save(registration);
 	//	ModelAndView model = new ModelAndView("register");
@@ -138,14 +144,16 @@ public class AdminController {
 		return model;
 	}
 		@RequestMapping(value="/adminprofile/{email}")
-    public ModelAndView profile(@PathVariable String email) {
+    public ModelAndView profile(@PathVariable String email,HttpSession session, RedirectAttributes shashi_session) {
         //List<User> listUsers = userDao.list();
         System.out.println("profile guru--------" + email);
         SearchEngine profileresult = adminDao.profiledetails(email);
 
         System.out.println("----------------------------------" + profileresult.getFirst_name());
+        String main_user_name = (String)session.getAttribute("registrationDTO");
         ModelAndView model = new ModelAndView("profile");
         model.addObject("profileresult",profileresult);
+        model.addObject("main_user_name", main_user_name);
        // model.addObject("userList", listUsers);
 
         return model;
@@ -158,40 +166,47 @@ public class AdminController {
 			String username  =  req.getParameter("username");
 			SearchEngine rr = adminDao.user_details(username);
 		//System.out.println("==========================" + rr.getEmail());
-		String name111 = (String)session.getAttribute("registrationDTO");
-		System.out.println("====================ssss=====" + name111);
+		String main_user_name = (String)session.getAttribute("registrationDTO");
+		System.out.println("====================ssss=====" + main_user_name);
 				ModelAndView model = new ModelAndView("adminhome");
 			//model.addObject(attributeName, attributeValue)
 			model.addObject("admindetails", rr);
-		   model.addObject("ssssssssssss", "shahshshsh");	
+		    model.addObject("ssssssssssss", "shahshshsh");
+		    model.addObject("main_user_name", main_user_name);
 			return model;
 		}
 
-		 @RequestMapping(value="/logout",method = RequestMethod.GET)
+		 @RequestMapping(value="/logout/{email}",method = RequestMethod.GET)
 	        public String logout(HttpServletRequest request){
-	            HttpSession httpSession = request.getSession();
-	            httpSession.invalidate();
+			
+			 request.getSession(false).invalidate();
+	          //  HttpSession httpSession = request.getSession();
+	           // httpSession.invalidate();
 	            return "redirect:/";
 	        }
 		
 		 @RequestMapping(value="/about_us",method = RequestMethod.GET)
-	        public ModelAndView about_us(HttpServletRequest request){
+	        public ModelAndView about_us(HttpServletRequest request,HttpSession session){
+			 String main_user_name = (String)session.getAttribute("registrationDTO");
 	            ModelAndView model = new ModelAndView("about_us");
+	            model.addObject("main_user_name", main_user_name);
 	            return model;
 	        }
  // NOtification code started here please review below these lines only
 //notification breaking
 // Notification design doing know, we completed based on the Primary Key
 	     @RequestMapping(value="/notification/{id}")
-	        public ModelAndView notification(@PathVariable int id){
+	        public ModelAndView notification(@PathVariable int id,HttpSession session){
 	        	System.out.println("------------shashi ------" + id);
 				    Notification notificatonresult = adminDao.getnotificationresult(id);
 				    SearchEngine ss = adminDao.getAdminDetails(id);
+				    String main_user_name = (String)session.getAttribute("registrationDTO");
 				    //System.out.println("00000000000000000" + ss.getEmail());
 				    //System.out.println("--------------------" + notificatonresult.getMessage());
 	                ModelAndView model = new ModelAndView("notification");
 				    model.addObject("notificatonresult",notificatonresult);
 				    model.addObject("admindetails", ss);
+				    model.addObject("main_user_name", main_user_name);
 	                return model;
 	     }
 //notification code completed here please stop here only
@@ -199,21 +214,23 @@ public class AdminController {
 // code to fetch the rejected applicants
 
 	     	@RequestMapping(value="/rejected_applicants/{id}",method = RequestMethod.GET)
-		public ModelAndView rejected_applicants(HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
+		public ModelAndView rejected_applicants(HttpSession session,HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
 				System.out.println("------------shashi ------" + id);
 				ModelAndView model = new ModelAndView("rejected_applicants");
 				List<SearchEngine> adminRejected_users =  adminDao.adminRejected_users();
+				String main_user_name = (String)session.getAttribute("registrationDTO");
 				for(SearchEngine ss : adminRejected_users){
 					System.out.println("========sdfds====" + ss.getFirst_name());
 				}
 				model.addObject("adminRejected_users",adminRejected_users);
+				model.addObject("main_user_name", main_user_name);
 				return model;
 		}
 
 
 //pdf coding don't change anything here please it's working fine
 		 @RequestMapping(value="/downloadPDF/{email}",method = RequestMethod.GET)
-	        public ModelAndView downloadPDF(HttpServletRequest request, HttpServletResponse response,@PathVariable String email){
+	        public ModelAndView downloadPDF(HttpSession session,HttpServletRequest request, HttpServletResponse response,@PathVariable String email){
 	            //HttpSession httpSession = request.getSession();
 	            //httpSession.invalidate();
 			 //System.out.println("------------------------" + email);
@@ -227,6 +244,7 @@ public class AdminController {
 			    response.setContentType("application/pdf");
 			    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
 			    String email1 ="shashi2466@gmail.com";
+			    String main_user_name = (String)session.getAttribute("registrationDTO");
 		        SearchEngine profileresult = adminDao.profiledetails(email);
 			    try {
 
@@ -245,6 +263,7 @@ public class AdminController {
 		        //return new ModelAndView("pdfView", "listBooks", listBooks);
 			 ModelAndView model = new ModelAndView("adminhome");
 		//		model.addObject("searchresult",searchresult);
+			 model.addObject("main_user_name", main_user_name);
 				return model;
 
 
