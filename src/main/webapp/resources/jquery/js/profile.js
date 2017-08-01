@@ -1,5 +1,9 @@
 $(document).ready(function () {
-  
+	
+	//$(".loading").removeAttr("style").hide();
+	
+	$('.loader').fadeOut();
+	
 	//$('#profilepage').each( function() { $(this).attr('readonly', true); });
 	//$("#email :input").attr("disabled", true);
 	$("#email").attr('disabled','disabled');
@@ -38,12 +42,14 @@ $(document).ready(function () {
     	var data = 'first_name=' + first_name + '&last_name=' + last_name + '&email=' + email + '&password=' + password;
     	var url = $("#profilepage").attr("action");
     	  $('#save_button').fancybox();
+    	  $('.loader').css({ 'visibility' : 'visible'});
     	$.ajax({
 			url : 'action',
 			data : data,
 			type : "GET",
 			success : function(data) {
-				alert( response );
+				
+				$(".loading").removeAttr("style").hide();
 			},
 			error: function(){
 				   alert('Error while request..');
