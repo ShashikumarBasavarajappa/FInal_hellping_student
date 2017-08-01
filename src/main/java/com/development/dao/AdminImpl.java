@@ -290,4 +290,15 @@ public Notification getnotificationresult(int id) {
 		ss.setIs_archived(my_id_value);
 		return null;
 	}
+
+	@Override
+	@Transactional
+	public SearchEngine user_details(String email) {
+		// TODO Auto-generated method stub
+		 Session session = sessionFactory.getCurrentSession();
+		   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
+		   SearchEngine profileresult = (SearchEngine) cr.uniqueResult();
+			System.out.println("----------------------------" + profileresult.getFirst_name());			  
+	    		   return profileresult;		
+	}
 }

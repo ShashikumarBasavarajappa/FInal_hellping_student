@@ -54,7 +54,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#">Home</a></li>
-      <li><a href="adminprofile/${admindetails.email}">Profile</a></li>
+      <li><a href="../adminprofile/${admindetails.email}">Profile</a></li>
       <li><a href="#" class="active">Search</a></li>
 
     </ul>
@@ -63,6 +63,7 @@
       <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
       <li id="message111"><a href="notification/${admindetails.id}"><span class="glyphicon glyphicon-envelope"></span> Notification</a></li>
     </ul>
+    
 
     <button class="btn btn-danger navbar-btn">Rejected Appliants</button>
   </div>

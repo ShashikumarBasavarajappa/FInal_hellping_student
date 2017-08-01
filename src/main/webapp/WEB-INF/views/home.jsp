@@ -126,6 +126,12 @@
                   <div class="panel-body">
                       <form class="form-horizontal" method="post" action="signin">
                       <div class="form-group">
+                       <label for="inputEmail3" class="col-sm-3 control-label"> </label>
+                       <div class="col-sm-9">
+                        	<h5 style="color:red">${error_msg}</h5>
+                        </div>    
+                      </div>      
+                      <div class="form-group">
                           <label for="inputEmail3" class="col-sm-3 control-label">
                               Email</label>
                           <div class="col-sm-9">

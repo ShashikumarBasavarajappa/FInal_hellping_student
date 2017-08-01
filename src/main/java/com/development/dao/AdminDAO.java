@@ -12,6 +12,7 @@ public interface AdminDAO {
 	public List<SearchEngine> searchAdmin(SearchEngine searchtext);
 
     public  SearchEngine profiledetails(String email);
+    public  SearchEngine user_details(String email);
     public  SearchEngine getAdminDetails(int id);
     public SearchEngine profilesave(SearchEngine profile_save);
 		public  Notification getnotificationresult(int id);

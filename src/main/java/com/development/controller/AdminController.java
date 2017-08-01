@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.development.dao.AdminDAO;
 import com.development.dao.RegisterDAO;
@@ -27,6 +28,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -148,6 +150,22 @@ public class AdminController {
 
         return model;
     }
+		
+		@RequestMapping(value="/admin_welcomepage")
+		public ModelAndView admin_welcomepage(HttpServletRequest req, HttpServletResponse response,RedirectAttributes rrr, HttpSession session, RedirectAttributes shashi_session) throws IOException{
+			//Registration  r = regDao.logincheck(username);
+			//System.out.println("-------------------------------------------------------" + req.getParameter("username"));
+			String username  =  req.getParameter("username");
+			SearchEngine rr = adminDao.user_details(username);
+		//System.out.println("==========================" + rr.getEmail());
+		String name111 = (String)session.getAttribute("registrationDTO");
+		System.out.println("====================ssss=====" + name111);
+				ModelAndView model = new ModelAndView("adminhome");
+			//model.addObject(attributeName, attributeValue)
+			model.addObject("admindetails", rr);
+		   model.addObject("ssssssssssss", "shahshshsh");	
+			return model;
+		}
 
 		 @RequestMapping(value="/logout",method = RequestMethod.GET)
 	        public String logout(HttpServletRequest request){
@@ -168,9 +186,12 @@ public class AdminController {
 	        public ModelAndView notification(@PathVariable int id){
 	        	System.out.println("------------shashi ------" + id);
 				    Notification notificatonresult = adminDao.getnotificationresult(id);
-				    System.out.println("--------------------" + notificatonresult.getMessage());
+				    SearchEngine ss = adminDao.getAdminDetails(id);
+				    //System.out.println("00000000000000000" + ss.getEmail());
+				    //System.out.println("--------------------" + notificatonresult.getMessage());
 	                ModelAndView model = new ModelAndView("notification");
 				    model.addObject("notificatonresult",notificatonresult);
+				    model.addObject("admindetails", ss);
 	                return model;
 	     }
 //notification code completed here please stop here only
