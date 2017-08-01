@@ -190,16 +190,19 @@
 </div>
     </div><!-- /.container -->
     </div>
+    <form action="file_upload_to_db" method="get">
  <div class="file_upload" id="file_upload">
  
   <div class="fileupload fileupload-new" data-provides="fileupload">
     <span class="btn btn-primary btn-file"><span class="fileupload-new">Select file</span>
     <span class="fileupload-exists">Change</span>         <input type="file" /></span>
     <span class="fileupload-preview"></span>
-    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+    <a href="" class="close fileupload-exists" data-dismiss="fileupload" style="float: none"></a>    
   </div>
   
  </div>
+ <button type="button" class="btn btn-primary" value="Upload" >
+ </form>
   
 <script>
 $(document).ready(function(){

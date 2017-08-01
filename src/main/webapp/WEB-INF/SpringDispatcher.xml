@@ -14,7 +14,6 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:mvc="http://www.springframework.org/schema/mvc">
 
-
 <mvc:annotation-driven/>
 
 <mvc:resources location="/resources/" mapping="/resources/**"/>
@@ -71,5 +70,4 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	</constructor-arg>
 
 </bean>
-
 </beans>
