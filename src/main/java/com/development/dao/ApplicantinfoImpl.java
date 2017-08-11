@@ -34,19 +34,12 @@ public class ApplicantinfoImpl implements ApplicantinfoDAO {
 	@Override
 	@Transactional
 	public List<SearchEngine> applicant_information(SearchEngine welcome_info){
-		
-		 //System.out.println("=============hello======" + welcome_info.getEmail());
 		 String email = welcome_info.getEmail();
 		 email="shivahosur@gmail.com";
 		  Session session = sessionFactory.getCurrentSession();
 		 Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
 		   SearchEngine profileresult = (SearchEngine) cr.uniqueResult();
-		   System.out.println("===========ssssssssssssssssdsdsdsds========" + profileresult.getFirst_name());
-		  //return null;
-		   return (List<SearchEngine>) profileresult;
-		  //String sads = "dsadsa";
-		// return (List<SearchEngine>) prof
-		//return null;
+		   return (List<SearchEngine>) profileresult;		  
 	}
 
 	@Override

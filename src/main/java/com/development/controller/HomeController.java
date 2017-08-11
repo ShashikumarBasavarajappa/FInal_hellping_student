@@ -33,9 +33,7 @@ public class HomeController {
 	        	ModelAndView model = new ModelAndView("home");
 	        
 		model.addObject("printme","SHASHIKUMAR !!");
-		return model;
-	     
-	        
+		return model;	        
 	}
 	
 	@RequestMapping(value="/home")

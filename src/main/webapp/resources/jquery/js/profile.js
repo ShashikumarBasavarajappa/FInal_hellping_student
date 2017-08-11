@@ -1,11 +1,5 @@
 $(document).ready(function () {
-	
-	//$(".loading").removeAttr("style").hide();
-	
-	$('.loader').fadeOut();
-	
-	//$('#profilepage').each( function() { $(this).attr('readonly', true); });
-	//$("#email :input").attr("disabled", true);
+	$('.loading').hide();
 	$("#email").attr('disabled','disabled');
 	$("#first_name").attr('disabled','disabled');
 	$("#last_name").attr('disabled','disabled');
@@ -29,6 +23,7 @@ $(document).ready(function () {
     });
 
     $('#save_button').on('click', function(event){
+    	$('.loading').show();
     	var first_name = $('#first_name').val();
     	var last_name = $('#last_name').val();
     	var email = $('#email').val();
@@ -48,8 +43,8 @@ $(document).ready(function () {
 			data : data,
 			type : "GET",
 			success : function(data) {
+				$('.loading').hide();
 				
-				$(".loading").removeAttr("style").hide();
 			},
 			error: function(){
 				   alert('Error while request..');

@@ -8,8 +8,8 @@
 
     </ul>
      <ul class="nav navbar-nav navbar-right">
-     <li><a href="about_us/${main_user_name}" class="active">About Us</a></li>
-      <li><a href="notification/${main_user_name}"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
+     <li><a href="about_us/" class="active">About Us</a></li>
+      <li><a href="../notification/${main_user_name}"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
         <li><a href="logout/${main_user_name}"><span class="glyphicon glyphicon-user"></span> Logout</a></li>	
     </ul>
 

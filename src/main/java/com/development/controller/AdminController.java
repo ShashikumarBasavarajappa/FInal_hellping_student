@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.development.dao.AdminDAO;
 import com.development.dao.RegisterDAO;
+import com.development.model.About_us;
 import com.development.model.Archived_user;
 import com.development.model.Notification;
 import com.development.model.Registration;
@@ -112,9 +113,6 @@ public class AdminController {
 
 	@RequestMapping(value="/rejected_applicants/enable_archiver", method=RequestMethod.GET)
 	public ModelAndView enable_archiver (@ModelAttribute("archive_user") Archived_user archive_user,HttpSession session){
-
-		System.out.println("============asddddddddsdsadsads====");
-		System.out.println("=======****555555555555555555555****" + archive_user.getUser_id());
 		int user_id  =  archive_user.getUser_id();
 		Archived_user au = adminDao.enable_archiver(archive_user);
 		return null;
@@ -126,21 +124,12 @@ public class AdminController {
 
 	@RequestMapping(value="/adminprofile/profile_save", method = RequestMethod.GET)
 	public ModelAndView profile_save(@ModelAttribute("profile_save") SearchEngine profile_save,HttpSession session) {
-
-		//System.out.println("****************************" + first_name + "************" + last_name);
-
-		System.out.println("=======*********" + profile_save.getFirst_name());
 		SearchEngine profilesave = adminDao.profilesave(profile_save);
-		System.out.println("----------------------------amma ---" + profile_save.getFirst_name());
+        
 		String main_user_name = (String)session.getAttribute("registrationDTO");
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("profileresult",profilesave);
-		model.addObject("main_user_name", main_user_name);
-		//System.out.println("................................" + Email + "=====" + FirstName + "=====" + LastName + "=====" + password + "==========" + Con_pas);
-	//	regDao.save(registration);
-	//	ModelAndView model = new ModelAndView("register");
-	//	model.addObject("printme","SHASHIKUMAR !!");
-	//	return model;;
+		model.addObject("main_user_name", main_user_name);		
 		return model;
 	}
 		@RequestMapping(value="/adminprofile/{email}")
@@ -148,12 +137,14 @@ public class AdminController {
         //List<User> listUsers = userDao.list();
         System.out.println("profile guru--------" + email);
         SearchEngine profileresult = adminDao.profiledetails(email);
-
+        
         System.out.println("----------------------------------" + profileresult.getFirst_name());
+                
         String main_user_name = (String)session.getAttribute("registrationDTO");
+        System.out.println("---------------------------ddddddd-------" + main_user_name);
         ModelAndView model = new ModelAndView("profile");
         model.addObject("profileresult",profileresult);
-        model.addObject("main_user_name", main_user_name);
+        model.addObject("main_user_name", email);
        // model.addObject("userList", listUsers);
 
         return model;
@@ -183,35 +174,44 @@ public class AdminController {
 	          //  HttpSession httpSession = request.getSession();
 	           // httpSession.invalidate();
 	            return "redirect:/";
-	        }
+	     }
 		
 		 @RequestMapping(value="/about_us",method = RequestMethod.GET)
-	        public ModelAndView about_us(HttpServletRequest request,HttpSession session){
-			 String main_user_name = (String)session.getAttribute("registrationDTO");
+	        public ModelAndView about_us(HttpServletRequest request,HttpSession session,@ModelAttribute("about_us") About_us about_us){
+                System.out.println("I'm here inside the about_us page");
+			    String main_user_name = (String)session.getAttribute("registrationDTO");
+			    System.out.println("*&*&*&&*&**" + main_user_name);
+			    adminDao.get_user_convesation_comments(main_user_name);
 	            ModelAndView model = new ModelAndView("about_us");
 	            model.addObject("main_user_name", main_user_name);
 	            return model;
-	        }
- // NOtification code started here please review below these lines only
-//notification breaking
-// Notification design doing know, we completed based on the Primary Key
+         }
+    
+		 @RequestMapping(value="/about_us_save/{email}", method = RequestMethod.POST)
+            public ModelAndView abous_us_save(@PathVariable String email,HttpServletRequest request,HttpSession session,@ModelAttribute("about_us") About_us about_us){
+                System.out.println("********************000088888" + request.getParameter("comments"));
+                String comments = request.getParameter("comments");
+                
+                System.out.println("After clicking on the save the about us data");
+                String main_user_name = (String)session.getAttribute("registrationDTO");
+                
+                adminDao.Save_valueable_comments(about_us);
+                ModelAndView model = new ModelAndView("about_us");
+                return model;
+            }
+
 	     @RequestMapping(value="/notification/{id}")
 	        public ModelAndView notification(@PathVariable int id,HttpSession session){
-	        	System.out.println("------------shashi ------" + id);
 				    Notification notificatonresult = adminDao.getnotificationresult(id);
 				    SearchEngine ss = adminDao.getAdminDetails(id);
 				    String main_user_name = (String)session.getAttribute("registrationDTO");
-				    //System.out.println("00000000000000000" + ss.getEmail());
-				    //System.out.println("--------------------" + notificatonresult.getMessage());
 	                ModelAndView model = new ModelAndView("notification");
 				    model.addObject("notificatonresult",notificatonresult);
 				    model.addObject("admindetails", ss);
 				    model.addObject("main_user_name", main_user_name);
 	                return model;
 	     }
-//notification code completed here please stop here only
 
-// code to fetch the rejected applicants
 
 	     	@RequestMapping(value="/rejected_applicants/{id}",method = RequestMethod.GET)
 		public ModelAndView rejected_applicants(HttpSession session,HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
@@ -258,11 +258,7 @@ public class AdminController {
 			        e1.printStackTrace();
 			    }
 
-
-		        // return a view which will be resolved by an excel view resolver
-		        //return new ModelAndView("pdfView", "listBooks", listBooks);
 			 ModelAndView model = new ModelAndView("adminhome");
-		//		model.addObject("searchresult",searchresult);
 			 model.addObject("main_user_name", main_user_name);
 				return model;
 

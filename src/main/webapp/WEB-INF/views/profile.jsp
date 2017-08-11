@@ -10,6 +10,7 @@
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/shaashi.css" rel="stylesheet"/>
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/background.css" rel="stylesheet"/>
  <link type="text/css" href="<%=request.getContextPath() %>/resources/css/profile.css" rel="stylesheet"/>
+ <link type="text/css" href="<%=request.getContextPath() %>/resources/css/spinner.css" rel="stylesheet"/>
  <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
  <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
  <script src="<%=request.getContextPath() %>/resources/jquery/js/profile.js"></script>
@@ -147,15 +148,22 @@
      </style>
 </head>
 <body>
+<style>
+	$(document).ready(function(){
+		$('loading').hide();
+		
+	});
+</style>
 <div class="container">
-<div class="loading" style="visibility: hidden;">Loading&#8230;</div>
+<div class="loading" style="display:none;]">Loading&#8230;</div>
+
 <%@include  file="default_nav_bar.jsp" %>
 	<form  id="profilepage" action="profile_save" method="get">
 
 <div class="col-md-3"></div>
     <div class="col-md-6">
          <div class="row myborder">
-             <h4 style="color: #7EB59E; margin: initial; margin-bottom: 10px;">View the profile</h4><hr>
+             <h4 style="color: #7EB59E; margin: initial; margin-bottom: 10px;">View the your  profile</h4><hr>
              <div class="input-group margin-bottom-20">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user mycolor"></i></span>
                 <input size="60" maxlength="255" class="form-control" value= ${profileresult.id} type="text" id="id" name="id">                                                        </div>

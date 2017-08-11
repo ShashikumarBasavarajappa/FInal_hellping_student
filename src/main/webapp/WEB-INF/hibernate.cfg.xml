@@ -11,5 +11,6 @@
     <mapping resource="com/development/model/Admin.hbm.xml"/>
     <mapping resource="com/development/model/Notification.hbm.xml"/>
     <mapping resource="com/development/model/Archived_user.hbm.xml"/>
+    <mapping resource="com/development/model/About_us.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
