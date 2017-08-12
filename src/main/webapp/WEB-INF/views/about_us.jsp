@@ -123,6 +123,7 @@
     </textarea>
     <input type="hidden" value="${main_user_name}" name="username" />
     <input type="hidden" value="5" name="rating_number" />
+    
     <br />
     <br />
     <button class="btn btn-success navbar-btn">send the comments</button>

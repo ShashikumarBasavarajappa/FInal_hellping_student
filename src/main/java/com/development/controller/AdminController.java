@@ -216,15 +216,13 @@ public class AdminController {
 	     }
 
 
-	     	@RequestMapping(value="/rejected_applicants/{id}",method = RequestMethod.GET)
-		public ModelAndView rejected_applicants(HttpSession session,HttpServletRequest request, HttpServletResponse response,@PathVariable int id){
-				System.out.println("------------shashi ------" + id);
+	     	@RequestMapping(value="/rejected_applicants/{email}",method = RequestMethod.GET)
+		public ModelAndView rejected_applicants(HttpSession session,HttpServletRequest request, HttpServletResponse response,@PathVariable String email){
+
+	     		System.out.println("*&&*&*&*&^^^%" );
 				ModelAndView model = new ModelAndView("rejected_applicants");
 				List<SearchEngine> adminRejected_users =  adminDao.adminRejected_users();
 				String main_user_name = (String)session.getAttribute("registrationDTO");
-				for(SearchEngine ss : adminRejected_users){
-					System.out.println("========sdfds====" + ss.getFirst_name());
-				}
 				model.addObject("adminRejected_users",adminRejected_users);
 				model.addObject("main_user_name", main_user_name);
 				return model;

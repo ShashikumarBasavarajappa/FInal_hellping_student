@@ -40,7 +40,7 @@
 
 <%@include  file="default_nav_bar.jsp" %>
 
-  <h2>Main Design Bar By SHASHIKUMAR</h2>
+  <h2 class="title"><span class="highlight" style="background: black;color: chartreuse;">Please search to see the result</h2>
 
 
   <div class="container-fluid">

@@ -6,18 +6,16 @@ $("#newsletter").on('click',function(){
 //var shashi =   $("#newsletter").is(":checked");
 var shashi  =   $('#newsletter:checked').val();
   if(shashi){
+	  $('.loading').show(); 
      $("#archive_user").removeAttr('disabled');
-      alert("---------------" + shashi);
       var data = 'user_id=' + shashi;
       var url = $("#profilepage").attr("action");
-
-      alert("url" + url + "data " + data);
-
       $.ajax({
       url : url,
       data : data,
       type : "get",
       success : function(data) {
+    	  $('.loading').hide();
         alert( response );
       },
       error: function(){
