@@ -174,8 +174,8 @@ public class AdminImpl  implements AdminDAO{
 		return ss;
 
 	}
-    
- 
+
+
 
 	public SearchEngine getDetails(int id){
 		Session session = sessionFactory.getCurrentSession();
@@ -280,8 +280,8 @@ public Notification getnotificationresult(int id) {
 		// TODO Auto-generated method stub
 		 Session session = sessionFactory.getCurrentSession();
 		   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
-		   SearchEngine profileresult = (SearchEngine) cr.uniqueResult();			
-	   	   return profileresult;		
+		   SearchEngine profileresult = (SearchEngine) cr.uniqueResult();
+	   	   return profileresult;
 	}
 
 	@Override
@@ -292,7 +292,7 @@ public Notification getnotificationresult(int id) {
 		 About_us aa = new  About_us();
 		 aa.setComments(about_us.getComments());
 		 aa.setEmail(about_us.getEmail());
-		 aa.setRating_number(about_us.getRating_number());		 
+		 aa.setRating_number(about_us.getRating_number());
 	     session.save(aa);
 		return null;
 	}
@@ -300,19 +300,19 @@ public Notification getnotificationresult(int id) {
 	@Override
 	@Transactional
 	public List<About_us> get_user_convesation_comments(String email) {
-				
+
 		Session session = sessionFactory.getCurrentSession();
 		//Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
 		System.out.println("******" + email);
 		Criteria cr = session.createCriteria(About_us.class);
-		cr.add(Restrictions.like("email", email));
+		cr.add(Restrictions.eq("email", email) );
 		List<About_us> crr = cr.list();
 
 		for (About_us avout_us : crr) {
 			System.out.println("5555555555555555555555" + avout_us.getEmail() );
 		}
 		System.out.println("55555555555555dddddd55555555" + crr.size() );
-		
+
 		// TODO Auto-generated method stub
 		return null;
 	}

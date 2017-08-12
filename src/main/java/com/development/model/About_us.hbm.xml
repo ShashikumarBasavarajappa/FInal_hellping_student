@@ -4,11 +4,12 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.development.model">
     <class name="About_us" table="about_us">
-    <id name="id" column="id">
+        <id name="id" column="id">
             <generator class="native"/>
         </id>
-        <property name="email" column="email" />
+
         <property name="rating_number" column="rating_number" />
         <property name="comments" column="comments" />
-    </class> 
+        <property name="email" column="email" />
+    </class>
 </hibernate-mapping>

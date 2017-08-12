@@ -14,17 +14,16 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
 @Entity
-@Indexed
 @Table(name="about_us")
 public class About_us {
 	@Id
 	@Field
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Field
-	private String email;
+
 	private String comments;
 	private int rating_number;
+  private String email;
 
 	public int getId() {
 		return id;
