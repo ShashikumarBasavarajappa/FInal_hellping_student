@@ -1,3 +1,4 @@
+<c:set var="contextPath" value="development"/>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
@@ -10,7 +11,7 @@
      <ul class="nav navbar-nav navbar-right">
      <li><a href="about_us/" class="active">About Us</a></li>
       <li><a href="../notification/${main_user_name}"><span class="glyphicon glyphicon-log-in"></span> Notification</a></li>
-        <li><a href="logout/${main_user_name}"><span class="glyphicon glyphicon-user"></span> Logout</a></li>	
+        <li><a href="logout"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
     </ul>
 
   </div>

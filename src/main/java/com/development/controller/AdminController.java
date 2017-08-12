@@ -49,7 +49,7 @@ public class AdminController {
 	@Autowired
 	AdminDAO adminDao;
 	RegisterDAO regDao;
-	
+
 	@RequestMapping(value="/adminprofile/search_redirt/{id}")
     public ModelAndView search_redirt(@PathVariable int id,HttpSession session, RedirectAttributes shashi_session) {
 
@@ -77,7 +77,7 @@ public class AdminController {
 
 
 		String main_user_name = (String)session.getAttribute("registrationDTO");
-		
+
 		//System.out.println(searchresult.ne);
 		//List ss = (List) searchresult.iterator();
 		//while(ss.it)
@@ -125,11 +125,11 @@ public class AdminController {
 	@RequestMapping(value="/adminprofile/profile_save", method = RequestMethod.GET)
 	public ModelAndView profile_save(@ModelAttribute("profile_save") SearchEngine profile_save,HttpSession session) {
 		SearchEngine profilesave = adminDao.profilesave(profile_save);
-        
+
 		String main_user_name = (String)session.getAttribute("registrationDTO");
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("profileresult",profilesave);
-		model.addObject("main_user_name", main_user_name);		
+		model.addObject("main_user_name", main_user_name);
 		return model;
 	}
 		@RequestMapping(value="/adminprofile/{email}")
@@ -137,9 +137,9 @@ public class AdminController {
         //List<User> listUsers = userDao.list();
         System.out.println("profile guru--------" + email);
         SearchEngine profileresult = adminDao.profiledetails(email);
-        
+
         System.out.println("----------------------------------" + profileresult.getFirst_name());
-                
+
         String main_user_name = (String)session.getAttribute("registrationDTO");
         System.out.println("---------------------------ddddddd-------" + main_user_name);
         ModelAndView model = new ModelAndView("profile");
@@ -149,7 +149,7 @@ public class AdminController {
 
         return model;
     }
-		
+
 		@RequestMapping(value="/admin_welcomepage")
 		public ModelAndView admin_welcomepage(HttpServletRequest req, HttpServletResponse response,RedirectAttributes rrr, HttpSession session, RedirectAttributes shashi_session) throws IOException{
 			//Registration  r = regDao.logincheck(username);
@@ -167,36 +167,39 @@ public class AdminController {
 			return model;
 		}
 
-		 @RequestMapping(value="/logout/{email}",method = RequestMethod.GET)
+		 @RequestMapping(value="/logout",method = RequestMethod.GET)
 	        public String logout(HttpServletRequest request){
-			
+
 			 request.getSession(false).invalidate();
-	          //  HttpSession httpSession = request.getSession();
-	           // httpSession.invalidate();
+	        HttpSession httpSession = request.getSession();
+	         httpSession.invalidate();
 	            return "redirect:/";
 	     }
-		
+
 		 @RequestMapping(value="/about_us",method = RequestMethod.GET)
 	        public ModelAndView about_us(HttpServletRequest request,HttpSession session,@ModelAttribute("about_us") About_us about_us){
                 System.out.println("I'm here inside the about_us page");
 			    String main_user_name = (String)session.getAttribute("registrationDTO");
 			    System.out.println("*&*&*&&*&**" + main_user_name);
-			    adminDao.get_user_convesation_comments(main_user_name);
+			    List<About_us> user_comments = adminDao.get_user_convesation_comments(main_user_name);
+
 	            ModelAndView model = new ModelAndView("about_us");
 	            model.addObject("main_user_name", main_user_name);
+	            model.addObject("user_comments",user_comments);
 	            return model;
          }
-    
+
 		 @RequestMapping(value="/about_us_save/{email}", method = RequestMethod.POST)
             public ModelAndView abous_us_save(@PathVariable String email,HttpServletRequest request,HttpSession session,@ModelAttribute("about_us") About_us about_us){
                 System.out.println("********************000088888" + request.getParameter("comments"));
                 String comments = request.getParameter("comments");
-                
+
                 System.out.println("After clicking on the save the about us data");
                 String main_user_name = (String)session.getAttribute("registrationDTO");
-                
+
+
                 adminDao.Save_valueable_comments(about_us);
-                ModelAndView model = new ModelAndView("about_us");
+                ModelAndView model = new ModelAndView("thank_you");
                 return model;
             }
 

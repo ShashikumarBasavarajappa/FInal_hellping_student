@@ -290,6 +290,7 @@ public Notification getnotificationresult(int id) {
 		// TODO Auto-generated method stub
 		 Session session = sessionFactory.getCurrentSession();
 		 About_us aa = new  About_us();
+		 System.out.println("==================******************====" + about_us.getEmail());
 		 aa.setComments(about_us.getComments());
 		 aa.setEmail(about_us.getEmail());
 		 aa.setRating_number(about_us.getRating_number());
@@ -303,17 +304,15 @@ public Notification getnotificationresult(int id) {
 
 		Session session = sessionFactory.getCurrentSession();
 		//Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
-		System.out.println("******" + email);
+
 		Criteria cr = session.createCriteria(About_us.class);
+		// due to some issue .com has issue in my code so leave as it is replace FileNotFoundException
+		email = email.replace(".com","");
 		cr.add(Restrictions.eq("email", email) );
 		List<About_us> crr = cr.list();
 
-		for (About_us avout_us : crr) {
-			System.out.println("5555555555555555555555" + avout_us.getEmail() );
-		}
-		System.out.println("55555555555555dddddd55555555" + crr.size() );
 
 		// TODO Auto-generated method stub
-		return null;
+		return crr;
 	}
 }
