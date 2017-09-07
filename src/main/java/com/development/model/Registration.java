@@ -1,5 +1,7 @@
 package com.development.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +27,8 @@ public class Registration {
 	private String password;
 	private int is_archived;
 	private String password_confirmation;
-
+	private Set<Notification> notification;
+	
 	public int getId() {
 		return id;
 	}
@@ -71,6 +74,12 @@ public class Registration {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Set<Notification> getNotification() {
+		return notification;
+	}
+	public void setNotification(Set<Notification> notification) {
+		this.notification = notification;
 	}
 
 

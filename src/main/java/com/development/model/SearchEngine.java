@@ -1,5 +1,7 @@
 package com.development.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +37,10 @@ public class SearchEngine {
 		private String password;
 		private int is_archived;
 		private String password_confirmation;
-
+		private Set<Notification> notification;
+		
+		
+		
 		public int getId() {
 			return id;
 		}
@@ -81,6 +86,12 @@ public class SearchEngine {
 		}
 		public void setPassword_confirmation(String password_confirmation) {
 			this.password_confirmation = password_confirmation;
+		}
+		public Set<Notification> getNotification() {
+			return notification;
+		}
+		public void setNotification(Set<Notification> notification) {
+			this.notification = notification;
 		}
 		
 		

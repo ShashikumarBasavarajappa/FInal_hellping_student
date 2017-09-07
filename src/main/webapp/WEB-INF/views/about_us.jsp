@@ -36,6 +36,10 @@
 			padding-right:30%;
 			}
 
+      body{
+        position: relative;
+      }
+
         </style>
     <!--
      <script>
@@ -117,6 +121,8 @@
 </div><!-- /row -->
 
 </div><!-- /container -->
+<br />
+<br />
 <form method="post" action="/development/about_us_save/${main_user_name}">
     <textarea id="comments" name="comments" class="comments">
       Please enter something before leaving the page!

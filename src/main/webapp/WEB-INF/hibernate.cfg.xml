@@ -12,7 +12,6 @@
     <mapping resource="com/development/model/Notification.hbm.xml"/>
     <mapping resource="com/development/model/Archived_user.hbm.xml"/>
     <mapping resource="com/development/model/About_us.hbm.xml"/>
-    <mapping resource="com/development/model/Optionset.hbm.xml"/>
-    <mapping resource="com/development/model/Optionentry.hbm.xml"/>
+    <mapping resource="com/development/model/States.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
