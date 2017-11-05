@@ -24,24 +24,42 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
 @Entity
-@Table(name="optionset")
-public class Optionset {
+@Table(name="College_braches")
+public class College_braches {
 
-	private int id;
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	@Field
-	private String name;
+	private int id;
+
+	private int college_id;
+	private String  branch_name;
+	private int  is_active_brach;
+	
+	public int getIs_active_brach() {
+		return is_active_brach;
+	}
+	public void setIs_active_brach(int is_active_brach) {
+		this.is_active_brach = is_active_brach;
+	}
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public int getCollege_id() {
+		return college_id;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCollege_id(int college_id) {
+		this.college_id = college_id;
 	}
+	public String getBranch_name() {
+		return branch_name;
+	}
+	public void setBranch_name(String branch_name) {
+		this.branch_name = branch_name;
+	}
+	
 }

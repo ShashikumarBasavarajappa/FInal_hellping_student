@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.management.remote.NotificationResult;
+import javax.transaction.Transaction;
+
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -21,6 +24,7 @@ import com.development.controller.AdminController;
 import com.development.model.About_us;
 import com.development.model.Archived_user;
 import com.development.model.Notification;
+
 import com.development.model.Registration;
 import com.development.model.SearchEngine;
 import com.development.model.User;
@@ -185,11 +189,13 @@ public class AdminImpl  implements AdminDAO{
 
 	@Override
     @Transactional
-public Notification getnotificationresult(int id) {
+public Notification getnotificationresult(String email) {
 
-	Session session = sessionFactory.getCurrentSession();
-	Notification Notificatonresult = (Notification) session.get(Notification.class, id);
+	Session session = sessionFactory.getCurrentSession();		
 
+	//System.out.println("**************888***********" +Notificatonresult.getEmail());
+	Notification Notificatonresult = (Notification) session.get(Notification.class, email);	
+	
 	return Notificatonresult;
 }
 
@@ -315,4 +321,27 @@ public Notification getnotificationresult(int id) {
 		// TODO Auto-generated method stub
 		return crr;
 	}
+/*
+	@Override
+	@Transactional
+	public List<Optionentry>  get_option_set_values(int id) {
+		// TODO Auto-generated method stub
+		  Session session = sessionFactory.getCurrentSession();
+		  System.out.println();
+		  
+	 //Criteria cr = session.createCriteria(Optionentry.class).add(Restrictions.eq("option_set_id", id));
+	 //Criteria crr =  session.createCriteria(Optionset.class);
+	// List<Optionset> sss =  crr.list();
+	 //System.out.println(sss.size());
+	 
+	  //Optionentry crr = (Optionentry) cr.list();
+	//List<Optionentry> crre = cr.list();
+	//System.out.println("%%%%%%%%%%" + crre.size());
+	 //List<SearchEngine> searchresult = cr.list();
+		  
+	//System.out.println("***************99989999*****" + crr.size());
+		
+		return null;
+	}
+	*/
 }

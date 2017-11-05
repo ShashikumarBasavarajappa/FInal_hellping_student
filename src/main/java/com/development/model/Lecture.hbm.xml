@@ -3,10 +3,13 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.development.model">
-    <class name="Optionset" table="optionset">
-        <id name="id" column="id">
+    <class name="Lecture" table="lecture">
+        <id name="id" column="ID">
             <generator class="increment"/>
         </id>
         <property name="name" column="name" />
+        <property name="branch" column="branch" />
+        <property name="active_lecture" column="active_lecture" /> 
+          <property name="college_id" column="college_id" /> 
     </class> 
 </hibernate-mapping>

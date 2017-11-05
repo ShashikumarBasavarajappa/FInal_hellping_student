@@ -30,12 +30,13 @@ public class Notification {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @DocumentId
     private int id;
     @Field
     private int user_id;
+    @Field
+	@Column(name = "email")
     private String email;
-	  private Date notified_date;
+	private Date notified_date;
 	  public Date getNotified_date() {
 		return notified_date;
 	}
@@ -43,6 +44,7 @@ public class Notification {
 		this.notified_date = notified_date;
 	}
 	private String message;
+	private SearchEngine searchengine;
     public int getId(){
         return id;
     }
@@ -68,5 +70,11 @@ public class Notification {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	public SearchEngine getSearchengine() {
+		return searchengine;
+	}
+	public void setSearchengine(SearchEngine searchengine) {
+		this.searchengine = searchengine;
 	}
 }

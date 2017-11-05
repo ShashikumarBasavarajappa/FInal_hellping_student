@@ -24,34 +24,49 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
 @Entity
-@Table(name="optionentry")
-public class Optionentry {
+@Table(name="Lecture")
+public class Lecture {
 
-	private int id;
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	@Field
-	private String value_string;
-	private Optionset op;
+    private int id;
+	private int   college_id;
+	private String  name;
+	private String branch;
+	private String active_lecture;
+	/*
+	 * 
+	 * Getter and Settter method of the declaration
+	 */
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getValue_string() {
-		return value_string;
+	public int getCollege_id() {
+		return college_id;
 	}
-	public void setValue_string(String value_string) {
-		this.value_string = value_string;
+	public void setCollege_id(int college_id) {
+		this.college_id = college_id;
 	}
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "optiton_set_id")
-	public Optionset getOp() {
-		return op;
+	public String getName() {
+		return name;
 	}
-	public void setOp(Optionset op) {
-		this.op = op;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+	public String getBranch() {
+		return branch;
+	}
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+	public String getActive_lecture() {
+		return active_lecture;
+	}
+	public void setActive_lecture(String active_lecture) {
+		this.active_lecture = active_lecture;
+	}	
 }

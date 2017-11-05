@@ -1,6 +1,7 @@
 package com.development.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +43,7 @@ public class Applicant_Acccount {
 		 SearchEngine profileresult = appDao.profiledetails(email);
 		
       //int sss = applicantinforesult.getId();
-		System.out.println("========sssssssssssssssssssssss=" + profileresult.getEmail() + profileresult.getFirst_name());
+		System.out.println("========sssssssssssssssssssssss=" + profileresult);
 		String shashi1 = "shashikumar";
 		String main_user_name = (String)session.getAttribute("registrationDTO");
 		ModelAndView  model = new ModelAndView("main_applicant_home");

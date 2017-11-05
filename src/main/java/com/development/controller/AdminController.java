@@ -73,7 +73,7 @@ public class AdminController {
 		//regDao.save(registration);
 		//SearchEngine ss = (SearchEngine) adminDao.searchAdmin(searchtext);
 		List<SearchEngine> searchresult = adminDao.searchAdmin(search);
-
+		
 
 
 		String main_user_name = (String)session.getAttribute("registrationDTO");
@@ -152,15 +152,15 @@ public class AdminController {
 
 		@RequestMapping(value="/admin_welcomepage")
 		public ModelAndView admin_welcomepage(HttpServletRequest req, HttpServletResponse response,RedirectAttributes rrr, HttpSession session, RedirectAttributes shashi_session) throws IOException{
-			//Registration  r = regDao.logincheck(username);
-			//System.out.println("-------------------------------------------------------" + req.getParameter("username"));
 			String username  =  req.getParameter("username");
+			
 			SearchEngine rr = adminDao.user_details(username);
-		//System.out.println("==========================" + rr.getEmail());
+			int option_set_id = 1;
+		/*	 adminDao.get_option_set_values(option_set_id); */
+	
+			//System.out.println(opp.getName());
 		String main_user_name = (String)session.getAttribute("registrationDTO");
-		System.out.println("====================ssss=====" + main_user_name);
 				ModelAndView model = new ModelAndView("adminhome");
-			//model.addObject(attributeName, attributeValue)
 			model.addObject("admindetails", rr);
 		    model.addObject("ssssssssssss", "shahshshsh");
 		    model.addObject("main_user_name", main_user_name);
@@ -203,14 +203,15 @@ public class AdminController {
                 return model;
             }
 
-	     @RequestMapping(value="/notification/{id}")
-	        public ModelAndView notification(@PathVariable int id,HttpSession session){
-				    Notification notificatonresult = adminDao.getnotificationresult(id);
-				    SearchEngine ss = adminDao.getAdminDetails(id);
+	     @RequestMapping(value="/notification/{email}")
+	        public ModelAndView notification(@PathVariable String email,HttpSession session){
+
+				    //Notification notificatonresult = adminDao.getnotificationresult(email);
+				    //SearchEngine ss = adminDao.getAdminDetails(id);
 				    String main_user_name = (String)session.getAttribute("registrationDTO");
 	                ModelAndView model = new ModelAndView("notification");
-				    model.addObject("notificatonresult",notificatonresult);
-				    model.addObject("admindetails", ss);
+				    //model.addObject("notificatonresult",notificatonresult);
+				    //model.addObject("admindetails", ss);
 				    model.addObject("main_user_name", main_user_name);
 	                return model;
 	     }

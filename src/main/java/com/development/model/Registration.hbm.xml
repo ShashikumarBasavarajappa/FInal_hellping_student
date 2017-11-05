@@ -12,6 +12,5 @@
         <property name="email" column="email" />
         <property name="password" column="PASSWORD" />
         <property name="is_archived" column="is_archived" />
-        
     </class> 
 </hibernate-mapping>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -15,7 +15,7 @@
     <link type="text/css" href="<%=request.getContextPath() %>/resources/css/welcome_homepage.css" rel="stylesheet"/>
     <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-1.8.3.min.js"></script>
       <script src="<%=request.getContextPath() %>/resources/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
-      
+
     <!-- <script src="<%=request.getContextPath() %>/resources/jquery/js/welcome_home_page_validation.js"></script> -->
 
         <style type="text/css">
@@ -40,7 +40,7 @@
 </head>
 <body>
   <div id="mySidenav" class="sidenav">
-  
+
   <p id="closeDev">  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></p>
     <a id="viewinformation">Your Information</a>
     <a href="#" id="resume_details">UpDate Resume</a>
@@ -56,7 +56,7 @@
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; View Data</span>
     <p>
     <div id="divProcessing">
-    
+
         <div class="container">
 
 
@@ -69,11 +69,11 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">First Name</label>  
+  <label class="col-md-4 control-label">First Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <p style="color:red;"><b>sssssssssss </b>   ${profileresult }  </p>
+  <p style="color:red;" id="shashi_checking"><b>sssssssssss </b>   ${profileresult }  </p>
   <input  type="text" name="first_name" placeholder="First Name" class="form-control"   value= ${shashi}>
     </div>
   </div>
@@ -82,7 +82,7 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Last Name</label> 
+  <label class="col-md-4 control-label" >Last Name</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -91,7 +91,7 @@
   </div>
 </div>
 
-  <div class="form-group"> 
+  <div class="form-group">
   <label class="col-md-4 control-label">Department / Office</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
@@ -111,11 +111,11 @@
   </div>
 </div>
 </div>
-  
+
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Username</label>  
+  <label class="col-md-4 control-label">Username</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -127,7 +127,7 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Password</label> 
+  <label class="col-md-4 control-label" >Password</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -139,7 +139,7 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Confirm Password</label> 
+  <label class="col-md-4 control-label" >Confirm Password</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -150,7 +150,7 @@
 
 <!-- Text input-->
        <div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>  
+  <label class="col-md-4 control-label">E-Mail</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -161,9 +161,9 @@
 
 
 <!-- Text input-->
-       
+
 <div class="form-group">
-  <label class="col-md-4 control-label">Contact No.</label>  
+  <label class="col-md-4 control-label">Contact No.</label>
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
@@ -192,18 +192,18 @@
     </div>
     <form action="file_upload_to_db" method="get">
  <div class="file_upload" id="file_upload">
- 
+
   <div class="fileupload fileupload-new" data-provides="fileupload">
     <span class="btn btn-primary btn-file"><span class="fileupload-new">Select file</span>
     <span class="fileupload-exists">Change</span>         <input type="file" /></span>
     <span class="fileupload-preview"></span>
-    <a href="" class="close fileupload-exists" data-dismiss="fileupload" style="float: none"></a>    
+    <a href="" class="close fileupload-exists" data-dismiss="fileupload" style="float: none"></a>
   </div>
-  
+
  </div>
  <button type="button" class="btn btn-primary" value="Upload" >
  </form>
-  
+
 <script>
 $(document).ready(function(){
 //	alert("hello shashi page loaded");
@@ -222,11 +222,13 @@ $(document).ready(function(){
 	         data : data,
 	         type : "GET",
 	         success : function(response) {
-	        	 alert("ddddd" + response);
 	        	 $('#divProcessing').show();
+             var objData = jQuery.parseJSON(data);
+             alert("=======================");
+             $("#shashi_checking").html(objData.email);
 	         },
 	         error: function(){
-	        	 
+
 	              alert('Error while request..');
 	          }
 	       });

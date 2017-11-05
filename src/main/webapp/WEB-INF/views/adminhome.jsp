@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -146,7 +146,7 @@
                     <td>${emp.last_name}</td>
                     <td>${emp.email}</td>
                     <td><form  id="profilepage" action="archive_user" method="get"> <input type="checkbox" name="newsletter" id="newsletter" value="${emp.id}"></form></td>
-           <td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
+                    <td><a href="downloadPDF/${emp.email}"><span class="glyphicon glyphicon-open" aria-hidden="true">View</span></a></td>
                  </tr>
 
                 </c:forEach>
@@ -154,7 +154,7 @@
 
 	</table>
   <br />
-    <button class="btn btn-danger navbar-btn" id="archive_user">Remove the User</button>
+    <button class="btn btn-danger navbar-btn" id="archive_user">Download Excel</button>
   </c:otherwise>
 </c:choose>
 </div>

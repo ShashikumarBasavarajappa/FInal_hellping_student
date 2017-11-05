@@ -1,5 +1,7 @@
 package com.development.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -12,6 +14,7 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private Set<Notification> notification;
 	public int getId() {
 		return id;
 	}
@@ -35,6 +38,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Set<Notification> getNotification() {
+		return notification;
+	}
+	public void setNotification(Set<Notification> notification) {
+		this.notification = notification;
 	}
 	
 	

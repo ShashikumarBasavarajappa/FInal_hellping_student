@@ -3,13 +3,12 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.development.model">
-    <class name="Optionentry" table="optionentry">
-        <id name="id" column="id">
+    <class name="College_braches" table="College_braches">
+        <id name="id" column="ID">
             <generator class="increment"/>
         </id>
-        <property name="value_string" column="value_string" />
-        <many-to-one name="Optionset" class="com.development.model.Optionset"
-            column="option_set_id" unique="true" not-null="true"
-            cascade="all" />
+        <property name="college_id" column="college_id" />
+        <property name="branch_name" column="branch_name" />
+        
     </class> 
 </hibernate-mapping>

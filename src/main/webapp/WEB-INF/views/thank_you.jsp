@@ -35,6 +35,9 @@
 			#sampleForm{
 			padding-right:30%;
 			}
+      body{
+        position: relative;
+      }
 
         </style>
     <!--
