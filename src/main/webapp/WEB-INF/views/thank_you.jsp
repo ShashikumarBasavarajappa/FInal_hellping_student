@@ -58,76 +58,17 @@
 
 <%@include  file="default_nav_bar.jsp" %>
 
-<div class="container">
-<!-- <%@include  file="chat_design.jsp" %> -->
-<div class="row">
-<div class="col-sm-12">
-<h3 style="color:red;"><b>User Comment Convesation</b></h3>
-</div><!-- /col-sm-12 -->
-</div><!-- /row -->
-<div class="row">
-
-<div class="col-sm-1">
-<div class="thumbnail">
-<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-</div><!-- /thumbnail -->
-</div><!-- /col-sm-1 -->
-
-<div class="col-sm-5">
-<div class="panel panel-default">
-<div class="panel-heading">
-<strong>Admin</strong> <span class="text-muted">commented 5 days ago</span>
+<div class="jumbotron text-xs-center">
+  <h1 class="display-3">Thank You!</h1>
+  <p class="lead"><strong>Your valuable reply help full for us!!!!!!!!!!!!</p>
+  <hr>
+  <p>
+    Having trouble? <a href="">Contact us</a>
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-sm" href="/${contextPath}/about_us" role="button">Continue to addning comments</a>
+  </p>
 </div>
-<c:forEach items="${user_comments}" var="user_comments">
-<div class="panel-body">
-
-  <tr>
-      <td>${user_comments.comments}</td>
-      <td>${user_comments.rating_number}</td>
-  </tr>
-
-</div><!-- /panel-body -->
-</c:forEach>
-</div><!-- /panel panel-default -->
-</div><!-- /col-sm-5 -->
-<div class="col-sm-1">
-<div class="thumbnail">
-<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-</div><!-- /thumbnail -->
-</div><!-- /col-sm-1 -->
-
-<div class="col-sm-5">
-<div class="panel panel-default">
-<div class="panel-heading">
-<strong>${main_user_name}</strong> <span class="text-muted">commented 5 days ago</span>
 </div>
-<c:forEach items="${user_comments}" var="user_comments">
-<div class="panel-body">
-
-  <tr>
-      <td>${user_comments.comments}</td>
-      <td>${user_comments.rating_number}</td>
-  </tr>
-
-</div><!-- /panel-body -->
-</c:forEach>
-</div><!-- /panel panel-default -->
-</div><!-- /col-sm-5 -->
-
-</div><!-- /row -->
-
-</div><!-- /container -->
-<form method="post" action="/development/about_us_save/${main_user_name}">
-    <textarea id="comments" name="comments" class="comments">
-      Please enter something before leaving the page!
-    </textarea>
-    <input type="hidden" value="${main_user_name}" name="username" />
-    <input type="hidden" value="5" name="rating_number" />
-    
-    <br />
-    <br />
-    <button class="btn btn-success navbar-btn">send the comments</button>
-</form>
-
 </body>
 </html>

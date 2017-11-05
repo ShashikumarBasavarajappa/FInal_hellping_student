@@ -73,6 +73,16 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	</constructor-arg>
 
 </bean>
+	<bean class="com.development.dao.OptionImpl" id="optionDao">
+
+	<constructor-arg>
+
+		<ref bean="sessionFactory"/>
+
+	</constructor-arg>
+
+</bean>
+
 	<bean class="com.development.dao.RegistrationImpl" id="regDao">
 		<constructor-arg>
 

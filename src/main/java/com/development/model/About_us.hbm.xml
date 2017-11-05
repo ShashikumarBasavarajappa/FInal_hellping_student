@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.development.model">
+    <class name="About_us" table="About_us">
+        <id name="id" column="ID">
+            <generator class="increment"/>
+        </id>
+        <property name="comments" column="comments" />
+        <property name="email" column="email" />
+        <property name="rating_number" column="rating_number" />
+
+    </class>
+</hibernate-mapping>

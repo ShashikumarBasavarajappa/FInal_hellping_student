@@ -1,7 +1,5 @@
 $(document).ready(function () {
-  alert("---------------------");
-	//$('#profilepage').each( function() { $(this).attr('readonly', true); });
-	//$("#email :input").attr("disabled", true);
+	$('.loading').hide();
 	$("#email").attr('disabled','disabled');
 	$("#first_name").attr('disabled','disabled');
 	$("#last_name").attr('disabled','disabled');
@@ -11,7 +9,7 @@ $(document).ready(function () {
 	//$('#save_button').attr('disabled','disabled');
 	$('#save_button').prop('disabled',true);
     $('#edit_button').click(function(){
-    	//alert("---------------------");
+  
     	$("#email").removeAttr('disabled');
     	$("#first_name").removeAttr('disabled');
     	$("#last_name").removeAttr('disabled');
@@ -25,6 +23,7 @@ $(document).ready(function () {
     });
 
     $('#save_button').on('click', function(event){
+    	$('.loading').show();
     	var first_name = $('#first_name').val();
     	var last_name = $('#last_name').val();
     	var email = $('#email').val();
@@ -37,16 +36,15 @@ $(document).ready(function () {
 
     	var data = 'first_name=' + first_name + '&last_name=' + last_name + '&email=' + email + '&password=' + password;
     	var url = $("#profilepage").attr("action");
-    	//alert("-----------------" + url);
-    	//alert("=======================" + data);
-    	//var frm = $('#submitForm');
-    	$('#save_button').fancybox();
+    	  $('#save_button').fancybox();
+    	  $('.loader').css({ 'visibility' : 'visible'});
     	$.ajax({
 			url : 'action',
 			data : data,
 			type : "GET",
 			success : function(data) {
-				alert( response );
+				$('.loading').hide();
+				
 			},
 			error: function(){
 				   alert('Error while request..');

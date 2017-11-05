@@ -1,5 +1,6 @@
 package com.development.dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.postgresql.core.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.development.controller.AdminController;
+import com.development.model.About_us;
 import com.development.model.Archived_user;
 import com.development.model.Notification;
 import com.development.model.Registration;
@@ -173,22 +175,18 @@ public class AdminImpl  implements AdminDAO{
 
 	}
 
+
+
 	public SearchEngine getDetails(int id){
-		System.out.println("9999999999999***9999999999" + id);
 		Session session = sessionFactory.getCurrentSession();
-
 		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
-		System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
-
 		return ss;
-
 	}
 
 	@Override
-@Transactional
+    @Transactional
 public Notification getnotificationresult(int id) {
-	// TODO Auto-generated method stub
-  System.out.println("=======================99999===" + id);
+
 	Session session = sessionFactory.getCurrentSession();
 	Notification Notificatonresult = (Notification) session.get(Notification.class, id);
 
@@ -202,9 +200,7 @@ public Notification getnotificationresult(int id) {
 
 		Session session = this.sessionFactory.getCurrentSession();
 
-		System.out.println("=======ammaa================" + archive_user.getUser_id());;
-		System.out.println("-----------------------sssssssssssssss-----------------eeeeeeeee ");
-		//archive_user.setEmail("shashi");
+
 		int user_id  = archive_user.getUser_id();
         //	SearchEngine aa  =
 		//  SQLQuery query = session.createSQLQuery("select e.user_id, e.email from Registration e where e.user_id=user_id");
@@ -216,10 +212,6 @@ public Notification getnotificationresult(int id) {
 
 
 		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, user_id);
-
-		//System.out.println("666666666666666666666*****************6666666666666" + ss.getPassword());
-
-
 		Archived_user aa = new Archived_user();
 		aa.setUser_id(ss.getId());
 		aa.setEmail(ss.getEmail());
@@ -258,15 +250,10 @@ public Notification getnotificationresult(int id) {
 		// TODO Auto-generated method stub
 
 		Session session = this.sessionFactory.getCurrentSession();
-
-		System.out.println("=======ammaa================" + archive_user.getUser_id());;
-		System.out.println("-----------------------sssssssssssssss-----------------eeeeeeeee ");
-
 		int user_id  = archive_user.getUser_id();
 		Criteria cr = session.createCriteria(Archived_user.class).add(Restrictions.eqOrIsNull("user_id", archive_user.getUser_id()));
 		//SearchEngine profileresult = (SearchEngine) cr.uniqueResult();
 		Archived_user aaa = (Archived_user) cr.uniqueResult();
-		System.out.println("==============adssdddddddddddddddddsdsa======" + aaa.getEmail());
 		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, user_id);
 		//Archived_user aa = (Archived_user) session.get(Archived_user.class, user_id);
 
@@ -281,11 +268,7 @@ public Notification getnotificationresult(int id) {
 
 	public SearchEngine archiveupdate (int id){
 		Session session = sessionFactory.getCurrentSession();
-		System.out.println("==============insnide the function====checking the changes==="+ id);
-		//int id = 1;
-//		SearchEngine ss = session.update(is_archived, id);
 		SearchEngine ss = (SearchEngine) session.get(SearchEngine.class, id);
-		//System.out.println("==================checking the changes===" + ss.getFirst_name());
 		int my_id_value = 1;
 		ss.setIs_archived(my_id_value);
 		return null;
@@ -298,7 +281,38 @@ public Notification getnotificationresult(int id) {
 		 Session session = sessionFactory.getCurrentSession();
 		   Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
 		   SearchEngine profileresult = (SearchEngine) cr.uniqueResult();
-			System.out.println("----------------------------" + profileresult.getFirst_name());			  
-	    		   return profileresult;		
+	   	   return profileresult;
+	}
+
+	@Override
+	@Transactional
+	public About_us Save_valueable_comments(About_us about_us) {
+		// TODO Auto-generated method stub
+		 Session session = sessionFactory.getCurrentSession();
+		 About_us aa = new  About_us();
+		 System.out.println("==================******************====" + about_us.getEmail());
+		 aa.setComments(about_us.getComments());
+		 aa.setEmail(about_us.getEmail());
+		 aa.setRating_number(about_us.getRating_number());
+	     session.save(aa);
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public List<About_us> get_user_convesation_comments(String email) {
+
+		Session session = sessionFactory.getCurrentSession();
+		//Criteria cr = session.createCriteria(SearchEngine.class).add(Restrictions.like("email", email,MatchMode.ANYWHERE));
+
+		Criteria cr = session.createCriteria(About_us.class);
+		// due to some issue .com has issue in my code so leave as it is replace FileNotFoundException
+		email = email.replace(".com","");
+		cr.add(Restrictions.eq("email", email) );
+		List<About_us> crr = cr.list();
+
+
+		// TODO Auto-generated method stub
+		return crr;
 	}
 }
