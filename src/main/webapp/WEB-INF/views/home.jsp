@@ -165,7 +165,7 @@
                         <h3>College Details</h3>
                         <p>Sri siddhratha Institute Of technology.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
+                            <a href="/development/college_data" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
                         </p>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                         <h3>College details</h3>
                         <p>Sri Siddhaganga Institute Technology.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
+                            <a href="/development/college_data" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
                         </p>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                         <h3>College Details</h3>
                         <p>Deshiya Vidya Samsthe.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
+                            <a href="/development/college_data" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
                         </p>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
                         <h3>School Imformation</h3>
                         <p>Madappa higher Primary School.</p>
                         <p>
-                            <a href="#" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
+                            <a href="/development/college_data" class="btn btn-primary">VIEW</a> <a href="#" class="btn btn-default">APPLY</a>
                         </p>
                     </div>
                 </div>

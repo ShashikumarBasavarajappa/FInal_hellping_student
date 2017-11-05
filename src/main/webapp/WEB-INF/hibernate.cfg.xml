@@ -8,10 +8,12 @@
     <property name="show_sql">true</property>
     <mapping resource="com/development/model/User.hbm.xml"/>
     <mapping resource="com/development/model/Registration.hbm.xml"/>
+    <mapping resource="com/development/model/College_braches.hbm.xml"/>
     <mapping resource="com/development/model/Admin.hbm.xml"/>
     <mapping resource="com/development/model/Notification.hbm.xml"/>
     <mapping resource="com/development/model/Archived_user.hbm.xml"/>
     <mapping resource="com/development/model/About_us.hbm.xml"/>
-    <mapping resource="com/development/model/States.hbm.xml"/>
+    <mapping resource="com/development/model/Lecture.hbm.xml"/>
+	
   </session-factory>
 </hibernate-configuration>

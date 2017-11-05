@@ -28,7 +28,6 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 
  <context:component-scan base-package="com.development"/>
 
-
 	<bean class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" id="dataSource">
 	
 		<property value="org.postgresql.Driver" name="driverClassName"/>
@@ -70,4 +69,5 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	</constructor-arg>
 
 </bean>
+
 </beans>
