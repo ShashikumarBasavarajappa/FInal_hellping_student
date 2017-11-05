@@ -35,6 +35,10 @@ public class Lecture {
 	private String  name;
 	private String branch;
 	private String active_lecture;
+	/*
+	 * 
+	 * Getter and Settter method of the declaration
+	 */
 	public int getId() {
 		return id;
 	}
@@ -64,8 +68,5 @@ public class Lecture {
 	}
 	public void setActive_lecture(String active_lecture) {
 		this.active_lecture = active_lecture;
-	}
-	
-	
-	
+	}	
 }
