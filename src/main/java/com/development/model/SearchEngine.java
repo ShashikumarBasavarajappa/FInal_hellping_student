@@ -16,7 +16,6 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
 @Entity
-@Indexed
 @Table(name="Registration")
 public class SearchEngine {
 
